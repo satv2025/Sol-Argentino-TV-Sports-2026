@@ -74,8 +74,6 @@ body {
     width: 100%;
     height: 50vh;
     object-fit: cover;
-
-    filter: brightness(.45) contrast(1.1);
 }
 
 /* degradado oscuro arriba */
@@ -83,9 +81,6 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-
-    background:
-        linear-gradient(to bottom, rgba(0, 0, 0, .2), rgba(0, 0, 0, .8));
 }
 
 .heroTitle {
