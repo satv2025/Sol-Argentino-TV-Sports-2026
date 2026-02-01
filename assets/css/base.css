@@ -1,4 +1,13 @@
+/* =====================================================
+   FONTS
+===================================================== */
+
 @import url("https://solargentinotv.com.ar/assets/fonts/Barlow/Barlow.css");
+
+
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
     margin: 0;
@@ -7,42 +16,91 @@
     font-family: "BarlowC", sans-serif;
 }
 
+html,
 body {
-    background: #0b0e14;
-    color: white;
+    height: 100%;
 }
 
-/* HEADER */
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root {
+    --red: #ff2020;
+    --redGlow: rgba(255, 32, 32, .45);
+
+    --dark1: #0b0e14;
+    --dark2: #0a0c12;
+    --dark3: #06070a;
+
+    --card: #121722;
+    --textSoft: #bdbdbd;
+}
+
+
+/* =====================================================
+   BODY – NEON BACKGROUND DEPORTIVO
+===================================================== */
+
+body {
+    color: #fff;
+    min-height: 100vh;
+
+    /* glow estadio arriba + profundidad abajo */
+    background:
+        radial-gradient(circle at 50% -15%, var(--redGlow), transparent 60%),
+        linear-gradient(to bottom, var(--dark1) 0%, var(--dark2) 50%, var(--dark3) 100%);
+
+    background-attachment: fixed;
+}
+
+
+/* =====================================================
+   HEADER / TOPBAR
+===================================================== */
 
 .topbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
     padding: 18px 40px;
+
     background: #10141d;
-    border-bottom: 3px solid #ff2020;
+
+    border-bottom: 3px solid var(--red);
+
+    box-shadow:
+        0 0 20px var(--redGlow),
+        inset 0 -1px 0 rgba(255, 255, 255, .05);
 }
 
 .logo {
     font-size: 32px;
     font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .logo span {
-    color: #ff2020
+    color: var(--red);
+    text-shadow: 0 0 12px var(--redGlow);
 }
 
 
-/* DROPDOWN */
+/* =====================================================
+   DROPDOWN
+===================================================== */
 
 .dropdown {
     position: relative;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .dropSelected {
     background: #1e2433;
     padding: 6px 14px;
-    border-radius: 6px
+    border-radius: 8px;
 }
 
 .dropMenu {
@@ -50,19 +108,31 @@ body {
     position: absolute;
     right: 0;
     top: 38px;
-    background: #1e2433
+
+    background: #1e2433;
+    border-radius: 8px;
+
+    overflow: hidden;
+    z-index: 10;
 }
 
 .dropMenu div {
-    padding: 8px 14px
+    padding: 8px 14px;
+}
+
+.dropMenu div:hover {
+    background: #181818;
+    color: #00ff99;
 }
 
 .dropdown.open .dropMenu {
-    display: block
+    display: block;
 }
 
 
-/* SLIDER */
+/* =====================================================
+   SLIDER HERO
+===================================================== */
 
 .slider {
     height: 65vh;
@@ -73,40 +143,157 @@ body {
 .slide {
     position: absolute;
     inset: 0;
+
     display: flex;
     align-items: flex-end;
+
     padding: 50px;
+
     background-size: cover;
     background-position: center;
+
     opacity: 0;
-    transition: 1s;
+    transition: opacity 1s ease;
 }
 
 .slide.active {
-    opacity: 1
+    opacity: 1;
 }
 
+/* overlay cinematográfico */
 .overlay {
-    background: rgba(0, 0, 0, .8);
+    background: rgba(0, 0, 0, .78);
+    backdrop-filter: blur(4px);
+
     padding: 25px;
-    border-left: 6px solid #ff2020;
+    border-left: 6px solid var(--red);
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 25px var(--redGlow);
 }
 
 .matchTitle {
     font-size: 60px;
     font-weight: 900;
+    text-shadow: 0 0 25px var(--redGlow);
 }
 
 .matchDate {
     font-size: 22px;
-    color: #ddd;
+    color: #ccc;
 }
 
 
-/* NOTICIAS (igual al home) */
+/* =====================================================
+   NEWS GRID
+===================================================== */
 
 .newsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    padding: 40px;
+}
+
+
+/* =====================================================
+   CARD HORIZONTAL (1 IMG) – DEPORTIVO
+===================================================== */
+
+.newsCard {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 16px;
+
+    background: linear-gradient(180deg,
+            #111622 0%,
+            #0c1018 100%);
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+/* hover neon */
+.newsCard:hover {
+    box-shadow:
+        0 0 22px var(--redGlow);
+}
+
+
+/* =====================================================
+   IMAGEN (solo 1)
+===================================================== */
+
+.newsCard img {
+    width: 190px;
+    height: 115px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+.newsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.newsCard h2 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.newsCard p {
+    font-size: 14px;
+    color: var(--textSoft);
+    line-height: 1.5;
+}
+
+.newsCard a {
+    color: var(--red);
+    font-weight: 800;
+    text-decoration: none;
+    margin-top: 4px;
+}
+
+.newsCard a:hover {
+    text-shadow: 0 0 10px var(--redGlow);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width:700px) {
+
+    .matchTitle {
+        font-size: 40px;
+    }
+
+    .newsCard {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .newsCard img {
+        width: 100%;
+        height: 170px;
+    }
 }

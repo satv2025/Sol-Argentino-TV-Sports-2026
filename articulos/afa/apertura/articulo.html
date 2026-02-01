@@ -7,34 +7,65 @@
 
     <title id="pageTitle">Artículo | SATV Sports</title>
 
+    <!-- CSS base neon -->
     <link rel="stylesheet" href="assets/css/base.css">
 
-    <!-- vidstack -->
+    <!-- Vidstack player -->
     <link rel="stylesheet" href="assets/css/vidstack/1.css">
     <link rel="stylesheet" href="assets/css/vidstack/2.css">
     <script src="https://cdn.vidstack.io/player" type="module"></script>
 
-    <!-- supabase SOLO SDK -->
+    <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
+
 <body>
 
+    <!-- =====================================================
+       HEADER
+  ====================================================== -->
     <header class="topbar">
         <div class="logo">SATV <span>SPORTS</span></div>
     </header>
 
-    <div class="heroWrap">
-        <img id="imgArticle" class="heroImg">
-        <h1 id="h1article" class="heroTitle"></h1>
-    </div>
 
+
+    <!-- =====================================================
+       HERO CINEMATOGRÁFICO
+  ====================================================== -->
+    <section class="heroWrap">
+
+        <!-- imagen dinámica -->
+        <img id="imgArticle" class="heroImg" alt="Imagen del artículo">
+
+        <!-- título dinámico -->
+        <h1 id="h1article" class="heroTitle"></h1>
+
+    </section>
+
+
+
+    <!-- =====================================================
+       CONTENIDO
+  ====================================================== -->
     <main id="articulo">
+
+        <!-- volver -->
         <a href="/deportes" class="backBtn">← Volver a Deportes</a>
-        <div id="contenidoArticle"></div>
+
+        <!-- contenido + videos inyectados por JS -->
+        <article id="contenidoArticle"></article>
+
     </main>
 
+
+
+    <!-- =====================================================
+       JS
+  ====================================================== -->
     <script src="assets/js/functionality.js"></script>
+
 </body>
 
 </html>

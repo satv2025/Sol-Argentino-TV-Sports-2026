@@ -1,5 +1,12 @@
 /* =====================================================
-   🔥 SUPABASE LOCAL (OBLIGATORIO EN CADA JS)
+   INIT
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", cargarArticulo);
+
+
+/* =====================================================
+   SUPABASE
 ===================================================== */
 
 const sb = supabase.createClient(
@@ -8,7 +15,6 @@ const sb = supabase.createClient(
 );
 
 const $ = id => document.getElementById(id);
-
 
 
 /* =====================================================
@@ -21,11 +27,6 @@ async function cargarArticulo() {
     const id = params.get("id");
 
     if (!id) return;
-
-
-    /* =============================
-       ARTICULO
-    ============================= */
 
     const { data: art, error } = await sb
         .from("articulos")
@@ -42,10 +43,25 @@ async function cargarArticulo() {
 
     $("h1article").textContent = art.titulo;
 
-    if (art.imagen)
+    if (art.imagen) {
         $("imgArticle").src = art.imagen;
-    else
+    } else {
         $("imgArticle").style.display = "none";
+    }
+
+
+    /* =============================
+       CONTENIDO BASE
+    ============================= */
+
+    let html = art.contenido || "";
+
+    if (!html.includes("<p>")) {
+        html = html
+            .split("\n\n")
+            .map(t => `<p>${t}</p>`)
+            .join("");
+    }
 
 
     /* =============================
@@ -57,22 +73,6 @@ async function cargarArticulo() {
         .select("*")
         .eq("articulo_id", id)
         .order("orden");
-
-
-    let html = art.contenido || "";
-
-
-    if (!html.includes("<p>")) {
-        html = html
-            .split("\n\n")
-            .map(t => `<p>${t}</p>`)
-            .join("");
-    }
-
-
-    /* =============================
-       REEMPLAZO {video-x}
-    ============================= */
 
     videos.forEach(v => {
 
@@ -98,5 +98,3 @@ async function cargarArticulo() {
 
     $("contenidoArticle").innerHTML = html;
 }
-
-cargarArticulo();

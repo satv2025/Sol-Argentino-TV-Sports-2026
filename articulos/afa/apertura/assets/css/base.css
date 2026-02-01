@@ -1,3 +1,7 @@
+/* =====================================================
+   FONTS / RESET
+===================================================== */
+
 @import url("https://solargentinotv.com.ar/assets/fonts/Barlow/Barlow.css");
 
 * {
@@ -7,73 +11,185 @@
     font-family: "BarlowC", sans-serif;
 }
 
-body {
-    background: #0b0e14;
-    color: white;
+:root {
+    --red: #ff2020;
+    --redGlow: rgba(255, 32, 32, .45);
+
+    --dark1: #0b0e14;
+    --dark2: #0a0c12;
+    --dark3: #06070a;
+
+    --textSoft: #cfcfcf;
 }
+
+
+/* =====================================================
+   BODY NEON BACKGROUND
+===================================================== */
+
+body {
+    color: #fff;
+
+    background:
+        radial-gradient(circle at 50% -15%, var(--redGlow), transparent 60%),
+        linear-gradient(to bottom, var(--dark1), var(--dark2) 50%, var(--dark3));
+
+    background-attachment: fixed;
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
 
 .topbar {
     padding: 18px 40px;
     background: #10141d;
-    border-bottom: 3px solid #ff2020;
+    border-bottom: 3px solid var(--red);
+
+    box-shadow: 0 0 18px var(--redGlow);
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 900;
 }
 
 .logo span {
-    color: #ff2020
+    color: var(--red);
+    text-shadow: 0 0 12px var(--redGlow);
 }
 
 
-/* HERO */
+/* =====================================================
+   HERO
+===================================================== */
 
 .heroWrap {
-    position: relative
+    position: relative;
+    overflow: hidden;
 }
 
 .heroImg {
     width: 100%;
-    height: 45vh;
+    height: 50vh;
     object-fit: cover;
-    filter: brightness(.6);
+
+    filter: brightness(.45) contrast(1.1);
+}
+
+/* degradado oscuro arriba */
+.heroWrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(to bottom, rgba(0, 0, 0, .2), rgba(0, 0, 0, .8));
 }
 
 .heroTitle {
     position: absolute;
-    bottom: 30px;
+    bottom: 35px;
     left: 40px;
     right: 40px;
-    font-size: 54px;
+
+    font-size: 56px;
     font-weight: 900;
+
+    text-shadow:
+        0 0 20px var(--redGlow),
+        0 0 40px rgba(0, 0, 0, .7);
 }
 
 
-/* CONTENIDO */
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
 
 #articulo {
     max-width: 900px;
-    margin: 50px auto;
-    padding: 0 25px 60px;
+    margin: 60px auto;
+    padding: 0 25px 80px;
 }
 
-#contenidoArticle {
-    font-size: 1.2rem;
-    line-height: 1.7;
-    color: #ddd;
-}
 
-.video-wrapper {
-    margin: 40px 0;
-    aspect-ratio: 16/9;
-}
+/* =====================================================
+   BOTON VOLVER
+===================================================== */
 
 .backBtn {
     display: inline-block;
-    margin-bottom: 30px;
-    color: #ff2020;
+
+    margin-bottom: 35px;
+
+    color: var(--red);
+    font-weight: 800;
     text-decoration: none;
-    font-weight: 700;
+
+    padding: 8px 14px;
+    border-radius: 8px;
+
+    transition: .2s;
+}
+
+.backBtn:hover {
+    background: rgba(255, 32, 32, .15);
+    text-shadow: 0 0 10px var(--redGlow);
+}
+
+
+/* =====================================================
+   TEXTO
+===================================================== */
+
+#contenidoArticle {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--textSoft);
+}
+
+#contenidoArticle p {
+    margin-bottom: 18px;
+}
+
+#contenidoArticle h2,
+#contenidoArticle h3 {
+    color: #fff;
+    margin: 30px 0 14px;
+}
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+.video-wrapper {
+    margin: 45px 0;
+    aspect-ratio: 16/9;
+
+    border-radius: 14px;
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, .7),
+        0 0 20px var(--redGlow);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:700px) {
+
+    .heroTitle {
+        font-size: 36px;
+        left: 20px;
+        right: 20px;
+    }
+
+    #articulo {
+        margin: 40px auto;
+    }
 }
