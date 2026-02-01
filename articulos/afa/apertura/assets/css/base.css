@@ -146,6 +146,7 @@ body {
 
 #contenidoArticle p {
     margin-bottom: 18px;
+    text-align: justify;
 }
 
 #contenidoArticle h2,

@@ -25,10 +25,50 @@ const $ = id => document.getElementById(id);
 ===================================================== */
 
 const matches = [
-    { img: "https://www.365scores.com/es/news/wp-content/uploads/2025/11/photo_2025-11-09_18-23-19.jpg", title: "RIV – BOC", date: "04/2026 (a confirmar)" },
-    { img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Huracan-vs-San-Lorenzo.jpg.webp", title: "HUR – SLO", date: "08/02/2026" },
-    { img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg", title: "IND – RAC", date: "04/2026 (a confirmar)" },
-    { img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Newells-vs-Rosario-Central.jpg", title: "CEN – NOB", date: "01/03/2026" }
+    {
+        img: "assets/images/rivboc1.png",
+        fecha: "15",
+        home: "River Plate",
+        away: "Boca Juniors",
+        estadio: "Mâs Monumental - Antonio Vespucio Liberti",
+        ciudad: "Núñez, Ciudad Autónoma de Buenos Aires",
+        hora: "A confirmar",
+        canal: "TNT Sports Premium / ESPN Premium",
+        date: "04/2026 (a confirmar)"
+    },
+    {
+        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Huracan-vs-San-Lorenzo.jpg.webp",
+        fecha: "4",
+        home: "Huracán",
+        away: "San Lorenzo",
+        estadio: "Tomás Adolfo Ducó - Palacio Ducó",
+        ciudad: "Parque de los Patricios, Ciudad Autónoma de Buenos Aires",
+        hora: "19:15",
+        canal: "TNT Sports Premium / ESPN Premium",
+        date: "08/02/2026"
+    },
+    {
+        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg",
+        fecha: "13",
+        home: "Independiente",
+        away: "Racing",
+        estadio: "Libertadores de América – Ricardo Enrique Bochini",
+        ciudad: "Avellaneda, Provincia de Buenos Aires",
+        hora: "A confirmar",
+        canal: "TNT Sports Premium / ESPN Premium",
+        date: "04/2026 (a confirmar)"
+    },
+    {
+        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Newells-vs-Rosario-Central.jpg",
+        fecha: "8",
+        home: "Newells",
+        away: "Rosario Central",
+        estadio: "Marcelo Bielsa - El Coloso del Parque",
+        ciudad: "Rosario, Provincia de Santa Fe",
+        hora: "17:00",
+        canal: "TNT Sports Premium / ESPN Premium",
+        date: "01/03/2026"
+    }
 ];
 
 function initSlider() {
@@ -47,11 +87,22 @@ function initSlider() {
             `linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.85)),url(${m.img})`;
 
         slide.innerHTML = `
-      <div class="overlay">
-        <div class="matchTitle">${m.title}</div>
-        <div class="matchDate">${m.date}</div>
-      </div>
-    `;
+            <div class="overlay">
+            <div class="matchFecha">Fecha: ${m.fecha}</div>
+                <div class="matchTitle">
+                    ${m.home} – ${m.away}
+                </div>
+
+                <div class="matchMeta">
+                    <span class="stadium">Estadio: ${m.estadio}</span>
+                    <span>Ciudad: ${m.ciudad}</span>
+                    <span>Hora: ${m.hora}</span>
+                    <span class="badge">${m.canal}</span>
+                </div>
+
+                <div class="matchDate">${m.date}</div>
+            </div>
+        `;
 
         if (i === 0) slide.classList.add("active");
 
@@ -68,7 +119,6 @@ function initSlider() {
     }, 4000);
 }
 
-
 /* =====================================================
    UTIL
 ===================================================== */
@@ -82,7 +132,7 @@ const slugify = t =>
 
 
 /* =====================================================
-   NOTICIAS DEPORTES (1 imagen horizontal neon)
+   NOTICIAS DEPORTES
 ===================================================== */
 
 async function cargarNoticiasDeportes() {
@@ -90,10 +140,8 @@ async function cargarNoticiasDeportes() {
     const container = $("homeNoticias");
     if (!container) return;
 
-    /* loading skeleton */
-    container.innerHTML = `
-    <div style="padding:20px;color:#888">Cargando noticias deportivas…</div>
-  `;
+    container.innerHTML =
+        `<div style="padding:20px;color:#888">Cargando noticias deportivas…</div>`;
 
     const { data, error } = await sb
         .from("articulos")
@@ -125,14 +173,13 @@ async function cargarNoticiasDeportes() {
         card.className = "newsCard";
 
         card.innerHTML = `
-      <img src="${n.imagen}" alt="${n.titulo}">
-
-      <div class="newsContent">
-        <h2>${n.titulo}</h2>
-        <p>${n.resumen || ""}</p>
-        <a href="${url}">Leer más →</a>
-      </div>
-    `;
+            <img src="${n.imagen}" alt="${n.titulo}">
+            <div class="newsContent">
+                <h2>${n.titulo}</h2>
+                <p>${n.resumen || ""}</p>
+                <a href="${url}">Leer más →</a>
+            </div>
+        `;
 
         card.addEventListener("click", () => location.href = url);
 
