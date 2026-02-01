@@ -1,11 +1,15 @@
+/* =====================================================
+   SUPABASE
+===================================================== */
+
 const sb = supabase.createClient(
     "https://api.solargentinotv.com.ar",
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwemd4dmtlZHNkampoenp5eXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MzQwOTAsImV4cCI6MjA4NTExMDA5MH0.RgFghlZVV4Ww27rfh96nTiafDwRu9jtC3S6Y6aFdIxE"
 );
 
+
 /* =====================================================
-   LOGOS OFICIALES (IDs REALES CDN PROMIEDOS)
-   🔥 ESTO ES LA SOLUCIÓN REAL
+   LOGOS TABLA (mapping fijo — única forma real)
 ===================================================== */
 
 const logos = {
@@ -42,8 +46,11 @@ const logos = {
     "Racing": "ihg"
 };
 
-const logoURL = name =>
-    `https://api.promiedos.com.ar/images/team/${logos[name]}/1`;
+const logoURL = id =>
+    `https://api.promiedos.com.ar/images/team/${id}/1`;
+
+const logoFromName = name =>
+    logoURL(logos[name] || "igg");
 
 
 /* =====================================================
@@ -58,14 +65,16 @@ function renderZona(id, titulo, data) {
     <h2>${titulo}</h2>
 
     ${data.map((t, i) => {
+
         const [gf, gc] = t.gol.split(":").map(Number);
 
         return `
         <div class="zoneRow">
+
           <span>${i + 1}</span>
 
           <span class="teamCell">
-            <img src="${logoURL(t.team)}" class="teamLogo">
+            <img src="${logoFromName(t.team)}" class="teamLogo">
             ${t.team}
           </span>
 
@@ -76,6 +85,7 @@ function renderZona(id, titulo, data) {
           <span>${t.g}</span>
           <span>${t.e}</span>
           <span>${t.p}</span>
+
         </div>
       `;
     }).join("")}
@@ -84,19 +94,19 @@ function renderZona(id, titulo, data) {
 
 
 /* =====================================================
-   FIXTURE (logos vienen del scraping)
+   FIXTURE
 ===================================================== */
-
-/* ================= FIXTURE ================= */
 
 let fixtureData = {};
 
 function renderFixture() {
 
-    const partidos =
-        Object.values(fixtureData)[0] || []; // 🔥 siempre agarra la primera fecha
-
     const box = document.getElementById("fixtureBox");
+
+    if (!box) return;
+
+    const firstKey = Object.keys(fixtureData)[0];
+    const partidos = fixtureData[firstKey] || [];
 
     if (!partidos.length) {
         box.innerHTML = "<p style='opacity:.6'>Sin partidos</p>";
@@ -105,10 +115,11 @@ function renderFixture() {
 
     box.innerHTML =
         partidos.map(([home, away, score, status, live, homeLogo, awayLogo]) => `
+
       <div class="matchCard ${live ? 'liveMatch' : ''}">
 
         <span class="teamSide">
-          <img src="https://api.promiedos.com.ar/images/team/${homeLogo}/1" class="teamLogo">
+          <img src="${logoURL(homeLogo)}" class="teamLogo">
           ${home}
         </span>
 
@@ -118,7 +129,7 @@ function renderFixture() {
 
         <span class="teamSide">
           ${away}
-          <img src="https://api.promiedos.com.ar/images/team/${awayLogo}/1" class="teamLogo">
+          <img src="${logoURL(awayLogo)}" class="teamLogo">
         </span>
 
         <div class="matchStatus ${live ? 'liveStatus' : ''}">
@@ -126,24 +137,39 @@ function renderFixture() {
         </div>
 
       </div>
+
     `).join("");
 }
 
 
-
 /* =====================================================
-   LOAD
+   LOAD DATA
 ===================================================== */
 
 async function loadData() {
 
-    const { data } =
-        await sb.functions.invoke("api-promiedos");
+    try {
 
-    renderZona("zonaA", "Zona A", data.zonaA);
-    renderZona("zonaB", "Zona B", data.zonaB);
+        const { data, error } =
+            await sb.functions.invoke("api-promiedos");
 
-    fixtureData = data.fixture;
+        if (error) throw error;
 
-    renderFixture(); // 🔥 directo, sin fechas, sin dropdown
+        renderZona("zonaA", "Zona A", data.zonaA);
+        renderZona("zonaB", "Zona B", data.zonaB);
+
+        fixtureData = data.fixture || {};
+
+        renderFixture();
+
+    } catch (e) {
+        console.error("Error cargando datos:", e);
+    }
 }
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", loadData);
