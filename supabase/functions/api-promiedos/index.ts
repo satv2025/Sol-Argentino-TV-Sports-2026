@@ -1,25 +1,38 @@
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 
-serve(async () => {
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
+};
+
+serve(async (req) => {
+
+  /* =========================
+     CORS preflight (CLAVE 🔥)
+  ========================= */
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+
+  /* =========================
+     SCRAPE PROMIEDOS
+  ========================= */
+
   const res = await fetch("https://www.promiedos.com.ar/", {
     headers: { "User-Agent": "Mozilla/5.0" }
   });
 
   const html = await res.text();
 
-  /* =========================
-     helpers
-  ========================= */
-
   const clean = (s: string) =>
     s.replace(/<[^>]+>/g, "").trim();
 
   /* =========================
-     TABLA (regex genérico)
+     TABLA
   ========================= */
 
-  const rowRegex =
-    /<tr.*?>([\s\S]*?)<\/tr>/g;
+  const rowRegex = /<tr.*?>([\s\S]*?)<\/tr>/g;
 
   const zonaA: any[] = [];
   const zonaB: any[] = [];
@@ -46,7 +59,7 @@ serve(async () => {
   }
 
   /* =========================
-     FIXTURE simple
+     FIXTURE
   ========================= */
 
   const matchRegex =
@@ -68,7 +81,7 @@ serve(async () => {
     {
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
+        ...corsHeaders
       }
     }
   );
