@@ -190,7 +190,7 @@ async function cargarNoticiasDeportes() {
         const name = n.slug || slugify(n.titulo);
 
         const url =
-            `/articulos/afa/apertura/articulo.html?date=${date}&name=${name}`;
+            `/articulos/afa/apertura/articulo.html?date=${date}&name=${name}&id=${n.id}`;
 
         const card = document.createElement("article");
         card.className = "newsCard";
