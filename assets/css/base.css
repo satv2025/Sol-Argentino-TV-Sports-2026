@@ -139,7 +139,6 @@ body {
    NUEVO BLOQUE INFO PARTIDO
 ===================================================== */
 
-/* fecha arriba tipo cartel */
 .matchFecha {
     display: inline-block;
     margin-bottom: 10px;
@@ -152,7 +151,6 @@ body {
     color: #e6e6e6;
 }
 
-/* contenedor datos */
 .matchMeta {
     margin-top: 10px;
     display: flex;
@@ -197,15 +195,19 @@ body {
 
 .newsCard {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 16px;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
     background: linear-gradient(180deg, #111622 0%, #0c1018 100%);
     border-radius: 14px;
     cursor: pointer;
     transition: .25s ease;
     overflow: hidden;
     text-align: justify;
+    height: auto;
+    /* Asegura que se calcule bien */
+    min-height: 180px;
+    /* O el alto mínimo que quieras */
 }
 
 .newsCard:hover {
@@ -217,13 +219,15 @@ body {
 }
 
 .newsCard img {
-    width: 190px;
-    height: 128px;
+    width: 320px;
+    height: auto;
+    flex: 0 0 auto;
+    align-self: stretch;
+    /* ← este estira la imagen */
     object-fit: cover;
-    transform: scale(1.25);
-    transform-origin: left center;
-    margin-left: -1em;
-    margin-right: 4em;
+    display: block;
+    margin: 0;
+    border-radius: 0;
 }
 
 .newsContent {
@@ -231,6 +235,7 @@ body {
     flex-direction: column;
     gap: 8px;
     flex: 1;
+    padding: 16px 18px;
     color: #fff !important;
     text-align: justify;
 }
@@ -294,12 +299,10 @@ body {
 
 @media (max-width:700px) {
 
-    /* oculta slides no activos */
     .slide:not(.active) {
         display: none !important;
     }
 
-    /* slide activo */
     .slide.active {
         display: flex !important;
         flex-direction: column;
@@ -311,7 +314,6 @@ body {
         padding: 0 !important;
     }
 
-    /* mostrar imagen arriba */
     .slide-img {
         display: block !important;
         width: 100vw;
@@ -323,7 +325,6 @@ body {
         border-radius: 0;
     }
 
-    /* datos debajo */
     .overlay {
         position: static !important;
         max-width: 100vw !important;
@@ -349,5 +350,61 @@ body {
         font-size: 13px;
         padding: 7px 2px;
         text-align: center;
+    }
+}
+
+/* =============================
+   🌐 WEBKIT (Chrome, Brave, Edge, Chromium, Safari)
+============================= */
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background:
+        radial-gradient(circle at 50% -15%, var(--redGlow), transparent 60%),
+        linear-gradient(to bottom, var(--dark1) 0%, var(--dark2) 50%, var(--dark3) 100%);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(219, 121, 121);
+    transition: background-color .2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff1f1f;
+}
+
+/* fixtureBox override */
+#fixtureBox::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+#fixtureBox::-webkit-scrollbar-thumb {
+    background-color: rgb(128, 128, 128);
+    border-radius: 10px;
+}
+
+#fixtureBox::-webkit-scrollbar-thumb:hover {
+    background-color: #CCCCCC;
+}
+
+/* =============================
+   🦊 FIREFOX ONLY (fallback)
+============================= */
+
+@supports not selector(::-webkit-scrollbar) {
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: rgb(219, 121, 121) transparent;
+    }
+
+    #fixtureBox {
+        scrollbar-width: thin;
+        scrollbar-color: rgb(128, 128, 128) transparent;
     }
 }

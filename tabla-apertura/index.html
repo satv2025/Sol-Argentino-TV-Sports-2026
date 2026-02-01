@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>SATV Sports | Tabla Apertura</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/tabla.css">
+    <link rel="icon" type="image/png"
+        href="https://sports.solargentinotv.com.ar/assets/images/SATV%20SPORTS%202024.png">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="logo">SATV <span>SPORTS</span></div>
+    </header>
+
+    <section class="leagueLayout">
+
+        <div id="zonaA" class="zoneCard"></div>
+        <div id="zonaB" class="zoneCard"></div>
+
+        <aside class="fixtureCard">
+
+            <div class="fixtureHeader">
+                <button id="prevFecha" class="navBtn">‹</button>
+
+                <div class="dropdown" id="fechaDropdown">
+                    <div class="dropdownTrigger" id="fechaTrigger">
+                        Fecha 3 <span class="chevron">▾</span>
+                    </div>
+                    <div class="dropdownMenu" id="fechaMenu"></div>
+                </div>
+
+                <button id="nextFecha" class="navBtn">›</button>
+            </div>
+
+            <div id="fixtureBox"></div>
+
+        </aside>
+
+    </section>
+
+    <script src="../assets/js/tabla.js"></script>
+</body>
+
+</html>
