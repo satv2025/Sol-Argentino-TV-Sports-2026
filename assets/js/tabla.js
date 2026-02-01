@@ -87,15 +87,23 @@ function renderZona(id, titulo, data) {
    FIXTURE (logos vienen del scraping)
 ===================================================== */
 
+/* ================= FIXTURE ================= */
+
 let fixtureData = {};
-let fechas = [];
 
 function renderFixture() {
 
-    const fecha = fechas[0];
-    const partidos = fixtureData[fecha] || [];
+    const partidos =
+        Object.values(fixtureData)[0] || []; // 🔥 siempre agarra la primera fecha
 
-    document.getElementById("fixtureBox").innerHTML =
+    const box = document.getElementById("fixtureBox");
+
+    if (!partidos.length) {
+        box.innerHTML = "<p style='opacity:.6'>Sin partidos</p>";
+        return;
+    }
+
+    box.innerHTML =
         partidos.map(([home, away, score, status, live, homeLogo, awayLogo]) => `
       <div class="matchCard ${live ? 'liveMatch' : ''}">
 
@@ -104,16 +112,23 @@ function renderFixture() {
           ${home}
         </span>
 
-        <span>${score}</span>
+        <span class="matchScore">
+          ${live ? "● " : ""}${score}
+        </span>
 
         <span class="teamSide">
           ${away}
           <img src="https://api.promiedos.com.ar/images/team/${awayLogo}/1" class="teamLogo">
         </span>
 
+        <div class="matchStatus ${live ? 'liveStatus' : ''}">
+          ${live ? "EN VIVO" : status}
+        </div>
+
       </div>
     `).join("");
 }
+
 
 
 /* =====================================================
@@ -129,9 +144,6 @@ async function loadData() {
     renderZona("zonaB", "Zona B", data.zonaB);
 
     fixtureData = data.fixture;
-    fechas = Object.keys(fixtureData);
 
-    renderFixture();
+    renderFixture(); // 🔥 directo, sin fechas, sin dropdown
 }
-
-document.addEventListener("DOMContentLoaded", loadData);
