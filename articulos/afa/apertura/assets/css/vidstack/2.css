@@ -5,10 +5,10 @@
  * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
  */
 
-@import url('https://solargentinotv.com.ar/assets/fonts/Gilroy/Gilroy.css');
+@import url("https://solargentinotv.com.ar/assets/fonts/Barlow/Barlow.css");
 
 * {
-    font-family: Gilroy, !important;
+    font-family: "BarlowC", sans-serif;
 }
 
 [data-media-player] .vds-video-layout:not([data-match]) {
