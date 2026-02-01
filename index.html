@@ -3,22 +3,22 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Sol Argentino TV Sports</title>
+    <title>SATV Sports | Deportes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="assets/css/base.css">
+
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
-
     <header class="topbar">
 
         <div class="logo">SATV <span>SPORTS</span></div>
 
-        <!-- 🔥 DROPDOWN idioma pedido -->
+        <!-- 🔥 dropdown idioma -->
         <div class="dropdown" id="droplang">
             <div class="dropSelected">ES</div>
             <div class="dropMenu">
@@ -30,48 +30,19 @@
     </header>
 
 
-    <!-- ================= HERO DESTACADO ================= -->
-
-    <section id="featured" class="featured hidden"></section>
-
-
-    <!-- ================= LAYOUT ================= -->
-
-    <main class="layout">
-
-        <!-- noticias -->
-        <section class="content">
-
-            <div class="sectionBar">
-                <h2 id="sectionTitle">Últimas noticias</h2>
-                <span class="liveBadge">● EN VIVO</span>
-            </div>
-
-            <div id="articlesGrid" class="grid"></div>
-
-        </section>
+    <!-- 🔥 SLIDER PARTIDOS -->
+    <section id="matchSlider" class="slider"></section>
 
 
-        <!-- 🔥 SIDEBAR PUBLICIDAD -->
-        <aside class="sidebar">
+    <!-- 🔥 NOTICIAS (MISMO HTML QUE HOME SATV) -->
+    <section style="padding:40px">
+        <h2 id="sectionTitle">Noticias Deportes</h2>
 
-            <div class="ad big">PUBLICIDAD</div>
-            <div class="ad">SPONSOR</div>
-            <div class="ad">SPONSOR</div>
-            <div class="ad">SPONSOR</div>
+        <div id="homeNoticias" class="newsGrid"></div>
+    </section>
 
-        </aside>
-
-    </main>
-
-
-    <footer>
-        © 2026 Sol Argentino TV Sports
-    </footer>
 
     <script src="assets/js/functionality.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3558596681335015"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
