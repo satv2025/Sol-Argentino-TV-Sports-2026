@@ -20,7 +20,7 @@ serve(async (req) => {
   const html = await res.text();
 
   /* =====================================================
-     TABLA (__NEXT_DATA__)
+     TABLA (JSON __NEXT_DATA__)
   ===================================================== */
 
   let zonaA: any[] = [];
@@ -31,11 +31,11 @@ serve(async (req) => {
   if (next) {
     const json = JSON.parse(next[1]);
 
-    const tables =
-      json.props.pageProps.data.tables_groups[0].tables;
+    const tables = json.props.pageProps.data.tables_groups[0].tables;
 
     const mapZona = (rows: any[]) =>
       rows.map((r: any) => {
+
         const v = Object.fromEntries(
           r.values.map((x: any) => [x.key, x.value])
         );
@@ -48,9 +48,9 @@ serve(async (req) => {
           e: +v.GamesEven,
           p: +v.GamesLost,
           gol: v.Goals,
-          logo: r.entity.object.logo
-            ?.split("/team/")[1]
-            ?.split("/")[0]
+
+          // 🔥 ID REAL DEL CDN (SIEMPRE EXISTE)
+          logo: r.entity.object.logo_path || "igg"
         };
       });
 
@@ -58,8 +58,9 @@ serve(async (req) => {
     zonaB = mapZona(tables[1].table.rows);
   }
 
+
   /* =====================================================
-     FIXTURE (HTML REAL ESTABLE)
+     FIXTURE (HTML REAL)
   ===================================================== */
 
   const fixture: any = { "Fecha actual": [] };
@@ -79,7 +80,7 @@ serve(async (req) => {
     const home = names[0];
     const away = names[1];
 
-    /* logos (100% seguro) */
+    /* logos reales */
     const logos = [...block.matchAll(
       /images\/team\/([^\/]+)\/1/g
     )].map(x => x[1]);
@@ -102,7 +103,6 @@ serve(async (req) => {
       block.match(/time_status___[^>]*>([^<]+)/)?.[1]
       || "Próximo";
 
-    /* live */
     const live = /time_live__/.test(block);
 
     fixture["Fecha actual"].push([

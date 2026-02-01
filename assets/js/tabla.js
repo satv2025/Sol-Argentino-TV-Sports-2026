@@ -22,10 +22,12 @@ function renderZona(id, titulo, data) {
         return `
         <div class="zoneRow">
           <span>${i + 1}</span>
+
           <span class="teamCell">
             <img src="${logoURL(t.logo)}" class="teamLogo">
             ${t.team}
           </span>
+
           <span>${t.pts}</span>
           <span>${t.pj}</span>
           <span>${gf}</span>
@@ -60,7 +62,9 @@ function renderFixture() {
           ${home}
         </span>
 
-        <span class="matchScore">${live ? "● " : ""}${score}</span>
+        <span class="matchScore">
+          ${live ? "● " : ""}${score}
+        </span>
 
         <span class="teamSide">
           ${away}
@@ -80,8 +84,7 @@ function renderFixture() {
 
 async function loadData() {
 
-    const { data } =
-        await sb.functions.invoke("api-promiedos");
+    const { data } = await sb.functions.invoke("api-promiedos");
 
     renderZona("zonaA", "Zona A", data.zonaA);
     renderZona("zonaB", "Zona B", data.zonaB);
