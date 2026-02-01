@@ -21,7 +21,7 @@ const $ = id => document.getElementById(id);
 
 
 /* =====================================================
-   SLIDER PARTIDOS (crossfade pro)
+   SLIDER PARTIDOS (PRO + RESPONSIVE REAL)
 ===================================================== */
 
 const matches = [
@@ -71,6 +71,7 @@ const matches = [
     }
 ];
 
+
 function initSlider() {
 
     const slider = $("matchSlider");
@@ -83,32 +84,53 @@ function initSlider() {
         const slide = document.createElement("div");
         slide.className = "slide";
 
+        /* ========= DESKTOP =========
+           usamos background (tu método original)
+        */
         slide.style.backgroundImage =
             `linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.85)),url(${m.img})`;
 
-        slide.innerHTML = `
-            <div class="overlay">
+        /* ========= MOBILE =========
+           agregamos <img> REAL
+           CSS lo mostrará solo en responsive
+        */
+        const img = document.createElement("img");
+        img.className = "slide-img";
+        img.src = m.img;
+        img.alt = `${m.home} vs ${m.away}`;
+
+        /* ========= DATOS ========= */
+
+        const overlay = document.createElement("div");
+        overlay.className = "overlay";
+
+        overlay.innerHTML = `
             <div class="matchFecha">Fecha: ${m.fecha}</div>
-                <div class="matchTitle">
-                    ${m.home} – ${m.away}
-                </div>
 
-                <div class="matchMeta">
-                    <span class="stadium">Estadio: ${m.estadio}</span>
-                    <span>Ciudad: ${m.ciudad}</span>
-                    <span>Hora: ${m.hora}</span>
-                    <span class="badge">${m.canal}</span>
-                </div>
+            <div class="matchTitle">
+                ${m.home} – ${m.away}
+            </div>
 
-                <div class="matchDate">${m.date}</div>
+            <div class="matchMeta">
+                <span class="stadium">Estadio: ${m.estadio}</span>
+                <span>Ciudad: ${m.ciudad}</span>
+                <span>Hora: ${m.hora}</span>
+                <span class="matchDate">${m.date}</span>
+                <span class="badge">${m.canal}</span>
             </div>
         `;
+
+        /* orden: img arriba, datos abajo */
+        slide.appendChild(img);
+        slide.appendChild(overlay);
 
         if (i === 0) slide.classList.add("active");
 
         slides.push(slide);
         slider.appendChild(slide);
     });
+
+    /* ========= AUTO ROTACIÓN ========= */
 
     let index = 0;
 
@@ -118,6 +140,7 @@ function initSlider() {
         slides[index].classList.add("active");
     }, 4000);
 }
+
 
 /* =====================================================
    UTIL
