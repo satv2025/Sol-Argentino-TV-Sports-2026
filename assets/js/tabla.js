@@ -1,12 +1,19 @@
 /* =====================================================
-   SATV TABLA + FIXTURE PRO MAX
-   TODO EN 1 ARCHIVO
+   SATV TABLA + FIXTURE PRO (DINÁMICO DESDE SUPABASE)
 ===================================================== */
 
+/* =========================
+   SUPABASE CLIENT
+========================= */
 
-/* =====================================================
-   ESCUDOS (Promiedos CDN)
-===================================================== */
+const sb = supabase.createClient(
+    "https://api.solargentinotv.com.ar",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwemd4dmtlZHNkampoenp5eXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MzQwOTAsImV4cCI6MjA4NTExMDA5MH0.RgFghlZVV4Ww27rfh96nTiafDwRu9jtC3S6Y6aFdIxE"
+);
+
+/* =========================
+   ESCUDOS (igual que antes)
+========================= */
 
 const logos = {
     "Platense": "hcah",
@@ -47,73 +54,7 @@ const logoURL = name =>
 
 
 /* =====================================================
-   DATOS ZONAS
-===================================================== */
-
-const zonaAData = [
-    { team: "Platense", pts: 7, pj: 3, gol: "4:2", g: 2, e: 1, p: 0 },
-    { team: "Vélez", pts: 7, pj: 3, gol: "4:2", g: 2, e: 1, p: 0 },
-    { team: "Lanús", pts: 6, pj: 2, gol: "5:3", g: 2, e: 0, p: 0 },
-    { team: "San Lorenzo", pts: 6, pj: 3, gol: "4:3", g: 2, e: 0, p: 1 },
-    { team: "Estudiantes", pts: 4, pj: 2, gol: "3:2", g: 1, e: 1, p: 0 },
-    { team: "Defensa", pts: 4, pj: 2, gol: "1:0", g: 1, e: 1, p: 0 },
-    { team: "Independiente", pts: 3, pj: 3, gol: "3:3", g: 0, e: 3, p: 0 },
-    { team: "Boca Jrs.", pts: 3, pj: 2, gol: "2:2", g: 1, e: 0, p: 1 },
-    { team: "Gimnasia (M)", pts: 3, pj: 2, gol: "1:1", g: 1, e: 0, p: 1 },
-    { team: "Talleres", pts: 3, pj: 3, gol: "4:5", g: 1, e: 0, p: 2 },
-    { team: "Newell's", pts: 1, pj: 2, gol: "2:3", g: 0, e: 1, p: 1 },
-    { team: "Unión", pts: 1, pj: 2, gol: "1:2", g: 0, e: 1, p: 1 },
-    { team: "Central Córdoba", pts: 1, pj: 3, gol: "0:2", g: 0, e: 1, p: 2 },
-    { team: "Instituto", pts: 0, pj: 2, gol: "1:3", g: 0, e: 0, p: 2 },
-    { team: "Riestra", pts: 0, pj: 2, gol: "0:2", g: 0, e: 0, p: 2 }
-];
-
-const zonaBData = [
-    { team: "River", pts: 6, pj: 2, gol: "3:0", g: 2, e: 0, p: 0 },
-    { team: "Ind. Rivadavia", pts: 6, pj: 2, gol: "4:2", g: 2, e: 0, p: 0 },
-    { team: "Tigre", pts: 4, pj: 2, gol: "3:1", g: 1, e: 1, p: 0 },
-    { team: "Belgrano", pts: 4, pj: 2, gol: "3:2", g: 1, e: 1, p: 0 },
-    { team: "Argentinos", pts: 4, pj: 2, gol: "1:0", g: 1, e: 1, p: 0 },
-    { team: "Central", pts: 3, pj: 2, gol: "3:3", g: 1, e: 0, p: 1 },
-    { team: "Sarmiento", pts: 3, pj: 2, gol: "1:1", g: 1, e: 0, p: 1 },
-    { team: "Gimnasia", pts: 3, pj: 2, gol: "2:3", g: 1, e: 0, p: 1 },
-    { team: "Aldosivi", pts: 2, pj: 2, gol: "0:0", g: 0, e: 2, p: 0 },
-    { team: "Huracán", pts: 2, pj: 3, gol: "3:4", g: 0, e: 2, p: 1 },
-    { team: "Atl. Tucumán", pts: 2, pj: 3, gol: "2:3", g: 0, e: 2, p: 1 },
-    { team: "Banfield", pts: 1, pj: 2, gol: "1:2", g: 0, e: 1, p: 1 },
-    { team: "Barracas", pts: 1, pj: 2, gol: "0:1", g: 0, e: 1, p: 1 },
-    { team: "Estudiantes RC", pts: 1, pj: 2, gol: "0:2", g: 0, e: 1, p: 1 },
-    { team: "Racing", pts: 0, pj: 2, gol: "2:4", g: 0, e: 0, p: 2 }
-];
-
-
-/* =====================================================
-   FIXTURE CON ESCUDOS
-===================================================== */
-
-const fixtureData = {
-    "Fecha 3": [
-        ["San Lorenzo", "Central Córdoba", "1-0", "Final"],
-        ["Independiente", "Vélez", "1-1", "Final"],
-        ["Atl. Tucumán", "Huracán", "1-1", "Final"],
-        ["Talleres", "Platense", "1-2", "Final"],
-        ["Barracas", "Riestra", "17:00", "Próximo"],
-        ["Boca Jrs.", "Newell's", "19:15", "Próximo"],
-        ["Central", "River", "21:30", "Próximo"],
-        ["Gimnasia", "Aldosivi", "17:30", "Próximo"],
-        ["Defensa", "Estudiantes", "17:30", "Próximo"],
-        ["Tigre", "Racing", "19:45", "Próximo"],
-        ["Argentinos", "Belgrano", "22:00", "Próximo"],
-        ["Unión", "Gimnasia (M)", "22:00", "Próximo"],
-        ["Banfield", "Estudiantes RC", "19:00", "Próximo"],
-        ["Ind. Rivadavia", "Sarmiento", "21:15", "Próximo"],
-        ["Instituto", "Lanús", "21:15", "Próximo"]
-    ]
-};
-
-
-/* =====================================================
-   RENDER TABLAS
+   TABLA RENDER
 ===================================================== */
 
 function renderZona(id, titulo, data) {
@@ -121,86 +62,84 @@ function renderZona(id, titulo, data) {
     const el = document.getElementById(id);
 
     el.innerHTML = `
-<div class="zoneTitle">${titulo}</div>
+  <div class="zoneTitle">${titulo}</div>
 
-<div class="zoneHeader">
-<span>#</span><span>Equipo</span><span>PTS</span><span>J</span>
-<span>GF</span><span>GC</span><span>DG</span><span>G</span><span>E</span><span>P</span>
-</div>
+  <div class="zoneHeader">
+  <span>#</span><span>Equipo</span><span>PTS</span><span>J</span>
+  <span>GF</span><span>GC</span><span>DG</span><span>G</span><span>E</span><span>P</span>
+  </div>
 
-${data.map((t, i) => {
+  ${data.map((t, i) => {
 
         const [gf, gc] = t.gol.split(":").map(Number);
         const dg = gf - gc;
 
         return `
-<div class="zoneRow ${i < 8 ? 'top' : ''}">
+    <div class="zoneRow ${i < 8 ? 'top' : ''}">
 
-<span>${i + 1}</span>
+      <span>${i + 1}</span>
 
-<span class="teamCell">
-<img src="${logoURL(t.team)}" class="teamLogo">
-${t.team}
-</span>
+      <span class="teamCell">
+        <img src="${logoURL(t.team)}" class="teamLogo">
+        ${t.team}
+      </span>
 
-<span>${t.pts}</span>
-<span>${t.pj}</span>
-<span>${gf}</span>
-<span>${gc}</span>
-<span>${dg > 0 ? `+${dg}` : dg}</span>
-<span>${t.g}</span>
-<span>${t.e}</span>
-<span>${t.p}</span>
+      <span>${t.pts}</span>
+      <span>${t.pj}</span>
+      <span>${gf}</span>
+      <span>${gc}</span>
+      <span>${dg > 0 ? "+" + dg : dg}</span>
+      <span>${t.g}</span>
+      <span>${t.e}</span>
+      <span>${t.p}</span>
 
-</div>`;
+    </div>`;
     }).join("")}
-`;
+  `;
 }
 
 
 /* =====================================================
-   FIXTURE RENDER
+   FIXTURE
 ===================================================== */
 
-const fechas = Object.keys(fixtureData);
+let fixtureData = {};
+let fechas = [];
 let current = 0;
 
 function renderFixture() {
 
     const fecha = fechas[current];
 
-    document.getElementById("fechaTrigger").firstChild.nodeValue = fecha + " ";
+    document.getElementById("fechaTrigger").firstChild.nodeValue =
+        fecha + " ";
 
     document.getElementById("fixtureBox").innerHTML =
         fixtureData[fecha].map(([home, away, score, status]) => `
-<div class="matchCard">
+      <div class="matchCard">
 
-<div class="matchTeams">
+        <div class="matchTeams">
 
-<span class="teamSide">
-<img src="${logoURL(home)}" class="teamLogo">
-${home}
-</span>
+          <span class="teamSide">
+            <img src="${logoURL(home)}" class="teamLogo">
+            ${home}
+          </span>
 
-<span class="matchScore">${score}</span>
+          <span class="matchScore">${score}</span>
 
-<span class="teamSide right">
-${away}
-<img src="${logoURL(away)}" class="teamLogo">
-</span>
+          <span class="teamSide right">
+            ${away}
+            <img src="${logoURL(away)}" class="teamLogo">
+          </span>
 
-</div>
+        </div>
 
-<div class="matchStatus">${status}</div>
+        <div class="matchStatus">${status}</div>
 
-</div>
-`).join("");
+      </div>
+    `).join("");
 }
 
-
-/* =====================================================
-   DROPDOWN
-===================================================== */
 
 function initDropdown() {
 
@@ -237,11 +176,31 @@ function initDropdown() {
 
 
 /* =====================================================
+   🔥 CARGAR DATOS DESDE EDGE FUNCTION
+===================================================== */
+
+async function loadData() {
+
+    const { data, error } =
+        await sb.functions.invoke("api-promiedos");
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    renderZona("zonaA", "Zona A", data.zonaA);
+    renderZona("zonaB", "Zona B", data.zonaB);
+
+    fixtureData = data.fixture;
+    fechas = Object.keys(fixtureData);
+
+    initDropdown();
+}
+
+
+/* =====================================================
    INIT
 ===================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
-    renderZona("zonaA", "Zona A", zonaAData);
-    renderZona("zonaB", "Zona B", zonaBData);
-    initDropdown();
-});
+document.addEventListener("DOMContentLoaded", loadData);
