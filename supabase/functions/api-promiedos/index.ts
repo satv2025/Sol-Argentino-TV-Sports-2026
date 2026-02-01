@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 
-const corsHeaders = {
+const cors = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
@@ -8,80 +8,100 @@ const corsHeaders = {
 
 serve(async (req) => {
 
-  /* =========================
-     CORS preflight (CLAVE 🔥)
-  ========================= */
   if (req.method === "OPTIONS") {
-    return new Response("ok", { headers: corsHeaders });
+    return new Response("ok", { headers: cors });
   }
 
-  /* =========================
-     SCRAPE PROMIEDOS
-  ========================= */
-
-  const res = await fetch("https://www.promiedos.com.ar/", {
-    headers: { "User-Agent": "Mozilla/5.0" }
-  });
+  const res = await fetch(
+    "https://www.promiedos.com.ar/league/liga-profesional/hc",
+    { headers: { "User-Agent": "Mozilla/5.0" } }
+  );
 
   const html = await res.text();
 
-  const clean = (s: string) =>
-    s.replace(/<[^>]+>/g, "").trim();
+  /* =====================================================
+     TABLA (__NEXT_DATA__)
+  ===================================================== */
 
-  /* =========================
-     TABLA
-  ========================= */
+  const next = html.match(/<script id="__NEXT_DATA__"[^>]*>(.*?)<\/script>/);
 
-  const rowRegex = /<tr.*?>([\s\S]*?)<\/tr>/g;
+  let zonaA: any[] = [];
+  let zonaB: any[] = [];
 
-  const zonaA: any[] = [];
-  const zonaB: any[] = [];
+  if (next) {
+    const json = JSON.parse(next[1]);
 
-  let currentZona = zonaA;
+    const tables =
+      json.props.pageProps.data.tables_groups[0].tables;
 
-  for (const row of html.matchAll(rowRegex)) {
-    const cols = [...row[1].matchAll(/<td.*?>([\s\S]*?)<\/td>/g)]
-      .map(c => clean(c[1]));
+    const mapZona = (rows: any[]) =>
+      rows.map((r: any) => {
+        const v = Object.fromEntries(
+          r.values.map((x: any) => [x.key, x.value])
+        );
 
-    if (cols.length >= 9) {
-      currentZona.push({
-        team: cols[1],
-        pts: +cols[2],
-        pj: +cols[3],
-        g: +cols[4],
-        e: +cols[5],
-        p: +cols[6],
-        gol: `${cols[7]}:${cols[8]}`
+        return {
+          team: r.entity.object.short_name,
+          pts: +v.Points,
+          pj: +v.GamePlayed,
+          g: +v.GamesWon,
+          e: +v.GamesEven,
+          p: +v.GamesLost,
+          gol: v.Goals
+        };
       });
 
-      if (currentZona.length === 15) currentZona = zonaB;
-    }
+    zonaA = mapZona(tables[0].table.rows);
+    zonaB = mapZona(tables[1].table.rows);
   }
 
-  /* =========================
-     FIXTURE
-  ========================= */
+  /* =====================================================
+     FIXTURE (HTML REAL)
+  ===================================================== */
 
-  const matchRegex =
-    /class="game-title".*?>(.*?)<.*?class="game-score".*?>(.*?)<.*?class="game-status".*?>(.*?)</g;
+  const fixture: any = { "Fecha actual": [] };
 
-  const fixture = {
-    "Hoy": [...html.matchAll(matchRegex)].map(m => [
-      clean(m[1].split("-")[0]),
-      clean(m[1].split("-")[1]),
-      clean(m[2]),
-      clean(m[3])
-    ])
-  };
+  const matchBlocks =
+    html.match(/<a[^>]*class="item_item__BqOgz[\s\S]*?<\/a>/g) || [];
 
-  /* ========================= */
+  for (const block of matchBlocks) {
+
+    const teams = [...block.matchAll(
+      /command_title__[^"]*">([^<]+)</g
+    )].map(t => t[1].trim());
+
+    if (teams.length < 2) continue;
+
+    const score =
+      block.match(/scores_scoreseventresult__[^>]*>(\d+)/g)
+        ?.map(s => s.match(/\d+/)[0])
+        ?.join("-")
+      ||
+      block.match(/time_time__[^>]*>([^<]+)/)?.[1]
+      ||
+      "-";
+
+    const status =
+      block.match(/time_status___[^>]*>([^<]+)/)?.[1]
+      || "Próximo";
+
+    const isLive = /time_live__/.test(block);
+
+    fixture["Fecha actual"].push([
+      teams[0],
+      teams[1],
+      score,
+      status,
+      isLive
+    ]);
+  }
 
   return new Response(
     JSON.stringify({ zonaA, zonaB, fixture }),
     {
       headers: {
         "Content-Type": "application/json",
-        ...corsHeaders
+        ...cors
       }
     }
   );
