@@ -334,7 +334,7 @@ iframe.vds-youtube[data-no-controls] {
 }
 
 .vds-live-button[data-edge] .vds-live-button-text {
-    background-color: #0078d4;
+    background-color: #008c2c;
     color: var(--media-live-button-edge-color, #f5f5f5)
 }
 
@@ -527,7 +527,7 @@ iframe.vds-youtube[data-no-controls] {
     font-family: var(--media-font-family, sans-serif);
     font-size: var(--media-chapter-title-font-size, 16px);
     font-weight: 700;
-    color: #0078d4;
+    color: #008c2c;
     flex: 1 1 0%;
     padding-inline: 6px;
     overflow: hidden;
@@ -1688,7 +1688,7 @@ iframe.vds-youtube[data-no-controls] {
     height: var(--thumb-size);
     border: var(--media-slider-thumb-border, 1px solid #cacaca00);
     border-radius: var(--media-slider-thumb-border-radius, 9999px);
-    background-color: var(--media-slider-thumb-bg, #0078d4) !important;
+    background-color: var(--media-slider-thumb-bg, #008c2c) !important;
     transform: translate(-50%, -50%) translateZ(0);
     transition: opacity .15s ease-in;
     pointer-events: none;
@@ -1738,7 +1738,7 @@ iframe.vds-youtube[data-no-controls] {
     box-sizing: border-box;
     contain: content;
     display: inline-block;
-    border: var(--media-thumbnail-border, 1px solid #0078d4) !important;
+    border: var(--media-thumbnail-border, 1px solid #008c2c) !important;
 }
 
 :where(.vds-slider-video video) {
@@ -1778,7 +1778,7 @@ iframe.vds-youtube[data-no-controls] {
     background-color: var(--media-slider-value-bg, #000);
     border-radius: none !important;
     border: var(--media-slider-value-border);
-    color: var(--media-slider-value-color, #0078d4) !important;
+    color: var(--media-slider-value-color, #008c2c) !important;
     padding: var(--media-slider-value-padding, 1px 10px)
 }
 
@@ -1835,7 +1835,7 @@ iframe.vds-youtube[data-no-controls] {
 }
 
 :where([data-live] .vds-time-slider .vds-slider-track-fill) {
-    background-color: #0078d4
+    background-color: #008c2c
 }
 
 :where(.vds-time-slider .vds-slider-progress) {
@@ -1982,7 +1982,7 @@ iframe.vds-youtube[data-no-controls] {
 
 .vds-time-divider {
     margin: 0 var(--media-time-divider-gap, 2.5px);
-    color: #0078d4;
+    color: #008c2c;
 }
 
 :where(.vds-time) {
