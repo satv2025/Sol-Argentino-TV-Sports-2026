@@ -30,7 +30,9 @@ serve(async (req) => {
 
   if (next) {
     const json = JSON.parse(next[1]);
-    const tables = json.props.pageProps.data.tables_groups[0].tables;
+
+    const tables =
+      json.props.pageProps.data.tables_groups[0].tables;
 
     const mapZona = (rows: any[]) =>
       rows.map((r: any) => {
@@ -57,7 +59,7 @@ serve(async (req) => {
   }
 
   /* =====================================================
-     FIXTURE (HTML REAL)
+     FIXTURE (HTML REAL ESTABLE)
   ===================================================== */
 
   const fixture: any = { "Fecha actual": [] };
@@ -67,18 +69,23 @@ serve(async (req) => {
 
   for (const block of blocks) {
 
-    /* equipos + logos */
-    const teams = [...block.matchAll(
-      /images\/team\/([^\/]+)\/1"[^>]*alt="([^"]+)"/g
-    )];
+    /* nombres */
+    const names = [...block.matchAll(
+      /command_title__[^"]*">([^<]+)</g
+    )].map(x => x[1].trim());
 
-    if (teams.length < 2) continue;
+    if (names.length < 2) continue;
 
-    const homeLogo = teams[0][1];
-    const home = teams[0][2];
+    const home = names[0];
+    const away = names[1];
 
-    const awayLogo = teams[1][1];
-    const away = teams[1][2];
+    /* logos (100% seguro) */
+    const logos = [...block.matchAll(
+      /images\/team\/([^\/]+)\/1/g
+    )].map(x => x[1]);
+
+    const homeLogo = logos[0] || "igg";
+    const awayLogo = logos[1] || "igg";
 
     /* score u hora */
     const score =
