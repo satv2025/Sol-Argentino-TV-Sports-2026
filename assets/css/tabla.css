@@ -446,3 +446,25 @@
 span {
     max-width: 9em;
 }
+
+.teamLogo {
+    width: 22px;
+    margin: 0 6px;
+}
+
+.liveMatch {
+    background: rgba(0, 255, 0, .08);
+    border-left: 4px solid #00ff66;
+}
+
+.liveStatus {
+    color: #00ff66;
+    font-weight: 700;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: .4;
+    }
+}

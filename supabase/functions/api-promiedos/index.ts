@@ -23,16 +23,14 @@ serve(async (req) => {
      TABLA (__NEXT_DATA__)
   ===================================================== */
 
-  const next = html.match(/<script id="__NEXT_DATA__"[^>]*>(.*?)<\/script>/);
-
   let zonaA: any[] = [];
   let zonaB: any[] = [];
 
+  const next = html.match(/<script id="__NEXT_DATA__"[^>]*>(.*?)<\/script>/);
+
   if (next) {
     const json = JSON.parse(next[1]);
-
-    const tables =
-      json.props.pageProps.data.tables_groups[0].tables;
+    const tables = json.props.pageProps.data.tables_groups[0].tables;
 
     const mapZona = (rows: any[]) =>
       rows.map((r: any) => {
@@ -47,7 +45,10 @@ serve(async (req) => {
           g: +v.GamesWon,
           e: +v.GamesEven,
           p: +v.GamesLost,
-          gol: v.Goals
+          gol: v.Goals,
+          logo: r.entity.object.logo
+            ?.split("/team/")[1]
+            ?.split("/")[0]
         };
       });
 
@@ -61,17 +62,25 @@ serve(async (req) => {
 
   const fixture: any = { "Fecha actual": [] };
 
-  const matchBlocks =
+  const blocks =
     html.match(/<a[^>]*class="item_item__BqOgz[\s\S]*?<\/a>/g) || [];
 
-  for (const block of matchBlocks) {
+  for (const block of blocks) {
 
+    /* equipos + logos */
     const teams = [...block.matchAll(
-      /command_title__[^"]*">([^<]+)</g
-    )].map(t => t[1].trim());
+      /images\/team\/([^\/]+)\/1"[^>]*alt="([^"]+)"/g
+    )];
 
     if (teams.length < 2) continue;
 
+    const homeLogo = teams[0][1];
+    const home = teams[0][2];
+
+    const awayLogo = teams[1][1];
+    const away = teams[1][2];
+
+    /* score u hora */
     const score =
       block.match(/scores_scoreseventresult__[^>]*>(\d+)/g)
         ?.map(s => s.match(/\d+/)[0])
@@ -81,18 +90,22 @@ serve(async (req) => {
       ||
       "-";
 
+    /* estado */
     const status =
       block.match(/time_status___[^>]*>([^<]+)/)?.[1]
       || "Próximo";
 
-    const isLive = /time_live__/.test(block);
+    /* live */
+    const live = /time_live__/.test(block);
 
     fixture["Fecha actual"].push([
-      teams[0],
-      teams[1],
+      home,
+      away,
       score,
       status,
-      isLive
+      live,
+      homeLogo,
+      awayLogo
     ]);
   }
 
