@@ -1,62 +1,85 @@
-import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
+// Función para obtener los datos de Promiedos
+const fetchData = async () => {
+  try {
+    // Hacer la solicitud a la API de Promiedos
+    const response = await fetch('https://www.promiedos.com.ar/league/liga-profesional/hc');
+    const data: { zonaA: Team[], zonaB: Team[], fixture: Fixture } = await response.json();
+    
+    // Procesar los datos de zonaA y zonaB
+    renderTable('zonaA', data.zonaA);
+    renderTable('zonaB', data.zonaB);
 
-serve(async () => {
-  const res = await fetch(
-    "https://api.promiedos.com.ar/league/tables_and_fixtures/hc",
-    {
-      headers: {
-        "x-ver": "1.11.7.5",
-        "referer": "https://www.promiedos.com.ar/",
-        "user-agent": "Mozilla/5.0"
-      }
-    }
-  );
+    // Procesar los fixtures
+    renderFixtures(data.fixture["Fecha actual"]);
+  } catch (error) {
+    console.error('Error al obtener los datos:', error);
+  }
+};
 
-  const data = await res.json();
-
-  /* ========= TABLAS ========= */
-
-  const parseZona = (rows: any[]) =>
-    rows.map((r: any) => {
-      const v = Object.fromEntries(r.values.map((x: any) => [x.key, x.value]));
-
-      return {
-        team: r.entity.object.short_name,
-        logo: r.entity.object.id,   // 🔥 id real
-        pts: +v.Points,
-        pj: +v.GamePlayed,
-        g: +v.GamesWon,
-        e: +v.GamesEven,
-        p: +v.GamesLost,
-        gol: v.Goals
+// Interfaz para el formato de la respuesta de la API
+interface Team {
+  num: number;
+  values: {
+    key: string;
+    value: string;
+  }[];
+  entity: {
+    type: number;
+    object: {
+      name: string;
+      short_name: string;
+      url_name: string;
+      id: string;
+      country_id: string;
+      allow_open: boolean;
+      colors: {
+        color: string;
+        text_color: string;
       };
-    });
+    };
+  };
+  destination_color: string;
+}
 
-  const zonaA = parseZona(data.tables_groups[0].tables[0].table.rows);
-  const zonaB = parseZona(data.tables_groups[0].tables[1].table.rows);
+interface Fixture {
+  "Fecha actual": {
+    id: string;
+    stage_round_name: string;
+    winner: number;
+    teams: {
+      name: string;
+      short_name: string;
+      url_name: string;
+      id: string;
+      country_id: string;
+      allow_open: boolean;
+      colors: {
+        color: string;
+        text_color: string;
+      };
+      red_cards: number;
+      goals: {
+        player_name: string;
+        player_sname: string;
+        time: string;
+        time_to_display: string;
+        goal_type?: string;
+      }[];
+    }[];
+    url_name: string;
+    scores: [number, number];
+    status: {
+      enum: number;
+      name: string;
+      short_name: string;
+      symbol_name: string;
+    };
+    start_time: string;
+    game_time: number;
+    game_time_to_display: string;
+    game_time_status_to_display: string;
+  }[];
+}
 
-  /* ========= FIXTURE ========= */
-
-  const games =
-    data.games.filters.find((f: any) => f.selected)?.games ?? [];
-
-  const fixture = games.map((g: any) => ({
-    home: g.teams[0].short_name,
-    homeLogo: g.teams[0].id,
-    away: g.teams[1].short_name,
-    awayLogo: g.teams[1].id,
-    score: g.scores ? `${g.scores[0]}-${g.scores[1]}` : "-",
-    status: g.status.short_name,
-    live: g.status.enum === 2
-  }));
-
-  return new Response(
-    JSON.stringify({ zonaA, zonaB, fixture }),
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      }
-    }
-  );
-});
+// Llamar a fetchData para cargar los datos
+fetchData();
