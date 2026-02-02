@@ -1,0 +1,2268 @@
+{
+    "zonaA": [
+        {
+            "num": 1,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "4:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "2"
+                },
+                {
+                    "key": "Points",
+                    "value": "7"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Platense",
+                    "short_name": "Platense",
+                    "url_name": "platense",
+                    "id": "hcah",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#5C3919",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 2,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "4:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "2"
+                },
+                {
+                    "key": "Points",
+                    "value": "7"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Vélez Sarsfield",
+                    "short_name": "Vélez",
+                    "url_name": "velez-sarsfield",
+                    "id": "ihc",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FFFFFF",
+                        "text_color": "#000000"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 3,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "5:3"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "2"
+                },
+                {
+                    "key": "Points",
+                    "value": "6"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Lanús",
+                    "short_name": "Lanús",
+                    "url_name": "lanus",
+                    "id": "igj",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#9D2A30",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 4,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "4:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "2"
+                },
+                {
+                    "key": "Points",
+                    "value": "6"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Boca Juniors",
+                    "short_name": "Boca Jrs.",
+                    "url_name": "boca-juniors",
+                    "id": "igg",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#182746",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 5,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "4:3"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "1"
+                },
+                {
+                    "key": "Points",
+                    "value": "6"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "San Lorenzo",
+                    "short_name": "San Lorenzo",
+                    "url_name": "san-lorenzo",
+                    "id": "igf",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#22314E",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 6,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "3:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "1"
+                },
+                {
+                    "key": "Points",
+                    "value": "4"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Estudiantes de La Plata",
+                    "short_name": "Estudiantes",
+                    "url_name": "estudiantes-de-la-plata",
+                    "id": "igh",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#D8021E",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 7,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:0"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "1"
+                },
+                {
+                    "key": "Points",
+                    "value": "4"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Defensa y Justicia",
+                    "short_name": "Defensa",
+                    "url_name": "defensa-y-justicia",
+                    "id": "hcbh",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FFFF00",
+                        "text_color": "#000000"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 8,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "3:3"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "0"
+                },
+                {
+                    "key": "Points",
+                    "value": "3"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "3"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Independiente",
+                    "short_name": "Independiente",
+                    "url_name": "independiente",
+                    "id": "ihe",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FF0000",
+                        "text_color": "#000000"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 9,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:1"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "0"
+                },
+                {
+                    "key": "Points",
+                    "value": "3"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Gimnasia de Mendoza",
+                    "short_name": "Gimnasia (M)",
+                    "url_name": "gimnasia-mendoza",
+                    "id": "bbjbf",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#000000",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            }
+        },
+        {
+            "num": 10,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "4:5"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-1"
+                },
+                {
+                    "key": "Points",
+                    "value": "3"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "2"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Talleres de Córdoba",
+                    "short_name": "Talleres",
+                    "url_name": "talleres-cordoba",
+                    "id": "jche",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FFFFFF",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        },
+        {
+            "num": 11,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-1"
+                },
+                {
+                    "key": "Points",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Unión de Santa Fe",
+                    "short_name": "Unión",
+                    "url_name": "union-santa-fe",
+                    "id": "hcag",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#F34843",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        },
+        {
+            "num": 12,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:3"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-2"
+                },
+                {
+                    "key": "Points",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "2"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Deportivo Riestra",
+                    "short_name": "Riestra",
+                    "url_name": "riestra",
+                    "id": "bbjea",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#28272C",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            }
+        },
+        {
+            "num": 13,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "0:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-2"
+                },
+                {
+                    "key": "Points",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "2"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Central Córdoba SdE",
+                    "short_name": "Central Córdoba",
+                    "url_name": "central-cordoba-sde",
+                    "id": "beafh",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#000000",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            }
+        },
+        {
+            "num": 14,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "2:5"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-3"
+                },
+                {
+                    "key": "Points",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "2"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Newell's Old Boys",
+                    "short_name": "Newell's",
+                    "url_name": "newell's-old-boys",
+                    "id": "ihh",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FD0808",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        },
+        {
+            "num": 15,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:3"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-2"
+                },
+                {
+                    "key": "Points",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "2"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Instituto",
+                    "short_name": "Instituto",
+                    "url_name": "instituto-ac-cordoba",
+                    "id": "hchc",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FF0000",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        }
+    ],
+    "zonaB": [
+        {
+            "num": 1,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "3:0"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "3"
+                },
+                {
+                    "key": "Points",
+                    "value": "7"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "River Plate",
+                    "short_name": "River",
+                    "url_name": "river-plate",
+                    "id": "igi",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#E3201C",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "live_data": {
+                "status": 3,
+                "score": [
+                    0,
+                    0
+                ]
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 2,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "4:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "2"
+                },
+                {
+                    "key": "Points",
+                    "value": "6"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Independiente Rivadavia",
+                    "short_name": "Ind. Rivadavia",
+                    "url_name": "independiente-rivadavia",
+                    "id": "hcch",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#14163F",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 3,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "3:1"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "2"
+                },
+                {
+                    "key": "Points",
+                    "value": "4"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Tigre",
+                    "short_name": "Tigre",
+                    "url_name": "tigre",
+                    "id": "iid",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#073EAF",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 4,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "3:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "1"
+                },
+                {
+                    "key": "Points",
+                    "value": "4"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Belgrano",
+                    "short_name": "Belgrano",
+                    "url_name": "belgrano",
+                    "id": "fhid",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#358FC8",
+                        "text_color": "#000000"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 5,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:0"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "1"
+                },
+                {
+                    "key": "Points",
+                    "value": "4"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Argentinos Juniors",
+                    "short_name": "Argentinos",
+                    "url_name": "argentinos-juniors",
+                    "id": "ihb",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#DD2D2F",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 6,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "3:3"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "0"
+                },
+                {
+                    "key": "Points",
+                    "value": "4"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Rosario Central",
+                    "short_name": "Central",
+                    "url_name": "rosario-central",
+                    "id": "ihf",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#004080",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            },
+            "live_data": {
+                "status": 3,
+                "score": [
+                    0,
+                    0
+                ]
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 7,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:1"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "0"
+                },
+                {
+                    "key": "Points",
+                    "value": "3"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Sarmiento Junín",
+                    "short_name": "Sarmiento",
+                    "url_name": "sarmiento-junin",
+                    "id": "hbbh",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#4AA575",
+                        "text_color": "#000000"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 8,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "2:3"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-1"
+                },
+                {
+                    "key": "Points",
+                    "value": "3"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Gimnasia La Plata",
+                    "short_name": "Gimnasia",
+                    "url_name": "gimnasia-la-plata",
+                    "id": "iia",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FFFFFF",
+                        "text_color": "#000000"
+                    }
+                }
+            },
+            "destination_color": "#03A9F4"
+        },
+        {
+            "num": 9,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "0:0"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "0"
+                },
+                {
+                    "key": "Points",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "0"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Aldosivi",
+                    "short_name": "Aldosivi",
+                    "url_name": "aldosivi",
+                    "id": "hccd",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#398138",
+                        "text_color": "#FFFFFF"
+                    }
+                }
+            }
+        },
+        {
+            "num": 10,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "3:4"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-1"
+                },
+                {
+                    "key": "Points",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Huracán",
+                    "short_name": "Huracán",
+                    "url_name": "huracan",
+                    "id": "iie",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FFFFFF",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        },
+        {
+            "num": 11,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "2:3"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-1"
+                },
+                {
+                    "key": "Points",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Atlético Tucumán",
+                    "short_name": "Atl. Tucumán",
+                    "url_name": "atletico-tucuman",
+                    "id": "gbfc",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FFFFFF",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        },
+        {
+            "num": 12,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "3"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-1"
+                },
+                {
+                    "key": "Points",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "2"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Barracas Central",
+                    "short_name": "Barracas",
+                    "url_name": "barracas-central",
+                    "id": "jafb",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FFFFFF",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        },
+        {
+            "num": 13,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "1:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-1"
+                },
+                {
+                    "key": "Points",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Banfield",
+                    "short_name": "Banfield",
+                    "url_name": "banfield",
+                    "id": "ihi",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#16A150",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        },
+        {
+            "num": 14,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "0:2"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-2"
+                },
+                {
+                    "key": "Points",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "1"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "1"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Estudiantes RC",
+                    "short_name": "Estudiantes RC",
+                    "url_name": "estudiantes-rio-cuarto",
+                    "id": "bheaf",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#77B8F2",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        },
+        {
+            "num": 15,
+            "values": [
+                {
+                    "key": "GamePlayed",
+                    "value": "2"
+                },
+                {
+                    "key": "Goals",
+                    "value": "2:4"
+                },
+                {
+                    "key": "Ratio",
+                    "value": "-2"
+                },
+                {
+                    "key": "Points",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesWon",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesEven",
+                    "value": "0"
+                },
+                {
+                    "key": "GamesLost",
+                    "value": "2"
+                }
+            ],
+            "entity": {
+                "type": 1,
+                "object": {
+                    "name": "Racing Club",
+                    "short_name": "Racing",
+                    "url_name": "racing-club",
+                    "id": "ihg",
+                    "country_id": "ba",
+                    "allow_open": true,
+                    "colors": {
+                        "color": "#FFFFFF",
+                        "text_color": "#000000"
+                    }
+                }
+            }
+        }
+    ],
+    "fixture": {
+        "Fecha actual": [
+            {
+                "id": "egdbhgi",
+                "stage_round_name": "Fecha 3",
+                "winner": 1,
+                "teams": [
+                    {
+                        "name": "San Lorenzo",
+                        "short_name": "San Lorenzo",
+                        "url_name": "san-lorenzo",
+                        "id": "igf",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#22314E",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Gregorio Rodríguez",
+                                "player_sname": "Rodríguez",
+                                "time": 55,
+                                "time_to_display": "55'"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Central Córdoba SdE",
+                        "short_name": "Central Córdoba",
+                        "url_name": "central-cordoba-sde",
+                        "id": "beafh",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#000000",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "san-lorenzo-vs-central-cordoba-sde",
+                "scores": [
+                    1,
+                    0
+                ],
+                "status": {
+                    "enum": 3,
+                    "name": "Finalizado",
+                    "short_name": "Final",
+                    "symbol_name": "Fin"
+                },
+                "start_time": "31-01-2026 17:30",
+                "game_time": 99,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Final"
+            },
+            {
+                "id": "egdbhhb",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Independiente",
+                        "short_name": "Independiente",
+                        "url_name": "independiente",
+                        "id": "ihe",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FF0000",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Jano Gordon",
+                                "player_sname": "Gordon",
+                                "time": 32,
+                                "time_to_display": "32'",
+                                "goal_type": "E.C"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Vélez Sarsfield",
+                        "short_name": "Vélez",
+                        "url_name": "velez-sarsfield",
+                        "id": "ihc",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Jano Gordon",
+                                "player_sname": "Gordon",
+                                "time": 31,
+                                "time_to_display": "31'"
+                            }
+                        ]
+                    }
+                ],
+                "url_name": "independiente-vs-velez-sarsfield",
+                "scores": [
+                    1,
+                    1
+                ],
+                "status": {
+                    "enum": 3,
+                    "name": "Finalizado",
+                    "short_name": "Final",
+                    "symbol_name": "Fin"
+                },
+                "start_time": "31-01-2026 19:45",
+                "game_time": 95,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Final"
+            },
+            {
+                "id": "egdbhgc",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Atlético Tucumán",
+                        "short_name": "Atl. Tucumán",
+                        "url_name": "atletico-tucuman",
+                        "id": "gbfc",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Leandro Diaz",
+                                "player_sname": "Diaz",
+                                "time": 45,
+                                "time_to_display": "45'+6",
+                                "goal_type": "Pen"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Huracán",
+                        "short_name": "Huracán",
+                        "url_name": "huracan",
+                        "id": "iie",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Jordy Caicedo",
+                                "player_sname": "Caicedo",
+                                "time": 66,
+                                "time_to_display": "66'",
+                                "goal_type": "Pen"
+                            }
+                        ]
+                    }
+                ],
+                "url_name": "atletico-tucuman-vs-huracan",
+                "scores": [
+                    1,
+                    1
+                ],
+                "status": {
+                    "enum": 3,
+                    "name": "Finalizado",
+                    "short_name": "Final",
+                    "symbol_name": "Fin"
+                },
+                "start_time": "31-01-2026 22:00",
+                "game_time": 101,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Final"
+            },
+            {
+                "id": "egdbhha",
+                "stage_round_name": "Fecha 3",
+                "winner": 2,
+                "teams": [
+                    {
+                        "name": "Talleres de Córdoba",
+                        "short_name": "Talleres",
+                        "url_name": "talleres-cordoba",
+                        "id": "jche",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Ignacio Vázquez",
+                                "player_sname": "Vazquez",
+                                "time": 51,
+                                "time_to_display": "51'",
+                                "goal_type": "E.C"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Platense",
+                        "short_name": "Platense",
+                        "url_name": "platense",
+                        "id": "hcah",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Ignacio Vázquez",
+                                "player_sname": "Vazquez",
+                                "time": 21,
+                                "time_to_display": "21'",
+                                "goal_type": "Pen"
+                            },
+                            {
+                                "player_name": "Gabriel Báez",
+                                "player_sname": "Báez",
+                                "time": 83,
+                                "time_to_display": "83'",
+                                "goal_type": "E.C"
+                            }
+                        ]
+                    }
+                ],
+                "url_name": "talleres-cordoba-vs-platense",
+                "scores": [
+                    1,
+                    2
+                ],
+                "status": {
+                    "enum": 3,
+                    "name": "Finalizado",
+                    "short_name": "Final",
+                    "symbol_name": "Fin"
+                },
+                "start_time": "31-01-2026 22:00",
+                "game_time": 98,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Final"
+            },
+            {
+                "id": "egdbhhe",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Barracas Central",
+                        "short_name": "Barracas",
+                        "url_name": "barracas-central",
+                        "id": "jafb",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Rodrigo Insúa",
+                                "player_sname": "Insúa",
+                                "time": 90,
+                                "time_to_display": "90'+14",
+                                "goal_type": "Pen"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Deportivo Riestra",
+                        "short_name": "Riestra",
+                        "url_name": "riestra",
+                        "id": "bbjea",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#28272C",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Antony Alonso",
+                                "player_sname": "Antony Alonso",
+                                "time": 24,
+                                "time_to_display": "24'"
+                            }
+                        ]
+                    }
+                ],
+                "url_name": "barracas-central-vs-riestra",
+                "scores": [
+                    1,
+                    1
+                ],
+                "status": {
+                    "enum": 3,
+                    "name": "Finalizado",
+                    "short_name": "Final",
+                    "symbol_name": "Fin"
+                },
+                "start_time": "01-02-2026 17:00",
+                "game_time": 90,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Final"
+            },
+            {
+                "id": "egdbhhc",
+                "stage_round_name": "Fecha 3",
+                "winner": 1,
+                "teams": [
+                    {
+                        "name": "Boca Juniors",
+                        "short_name": "Boca Jrs.",
+                        "url_name": "boca-juniors",
+                        "id": "igg",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#2D2E58",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0,
+                        "goals": [
+                            {
+                                "player_name": "Lautaro Blanco",
+                                "player_sname": "Blanco",
+                                "time": 40,
+                                "time_to_display": "40'"
+                            },
+                            {
+                                "player_name": "Leandro Paredes",
+                                "player_sname": "Paredes",
+                                "time": 56,
+                                "time_to_display": "56'",
+                                "goal_type": "Pen"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Newell's Old Boys",
+                        "short_name": "Newell's",
+                        "url_name": "newell's-old-boys",
+                        "id": "ihh",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FD0808",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "boca-juniors-vs-newell's-old-boys",
+                "scores": [
+                    2,
+                    0
+                ],
+                "status": {
+                    "enum": 3,
+                    "name": "Finalizado",
+                    "short_name": "Final",
+                    "symbol_name": "Fin"
+                },
+                "start_time": "01-02-2026 19:15",
+                "game_time": 96,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Final"
+            },
+            {
+                "id": "egdbhgg",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Rosario Central",
+                        "short_name": "Central",
+                        "url_name": "rosario-central",
+                        "id": "ihf",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#004080",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "River Plate",
+                        "short_name": "River",
+                        "url_name": "river-plate",
+                        "id": "igi",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "rosario-central-vs-river-plate",
+                "scores": [
+                    0,
+                    0
+                ],
+                "status": {
+                    "enum": 2,
+                    "name": "Primer Tiempo",
+                    "short_name": "1°",
+                    "symbol_name": "1°"
+                },
+                "start_time": "01-02-2026 21:30",
+                "game_time": 11,
+                "game_time_to_display": "11'",
+                "game_time_status_to_display": "11'"
+            },
+            {
+                "id": "egdbhgh",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Gimnasia La Plata",
+                        "short_name": "Gimnasia",
+                        "url_name": "gimnasia-la-plata",
+                        "id": "iia",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "Aldosivi",
+                        "short_name": "Aldosivi",
+                        "url_name": "aldosivi",
+                        "id": "hccd",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#398138",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "gimnasia-la-plata-vs-aldosivi",
+                "status": {
+                    "enum": 1,
+                    "name": "Prog.",
+                    "short_name": "Prog.",
+                    "symbol_name": "Prog."
+                },
+                "start_time": "02-02-2026 17:30",
+                "game_time": -1,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Prog."
+            },
+            {
+                "id": "egdbhhd",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Defensa y Justicia",
+                        "short_name": "Defensa",
+                        "url_name": "defensa-y-justicia",
+                        "id": "hcbh",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFF00",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "Estudiantes de La Plata",
+                        "short_name": "Estudiantes",
+                        "url_name": "estudiantes-de-la-plata",
+                        "id": "igh",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FAFAFA",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "defensa-y-justicia-vs-estudiantes-de-la-plata",
+                "status": {
+                    "enum": 1,
+                    "name": "Prog.",
+                    "short_name": "Prog.",
+                    "symbol_name": "Prog."
+                },
+                "start_time": "02-02-2026 17:30",
+                "game_time": -1,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Prog."
+            },
+            {
+                "id": "egdbhgf",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Tigre",
+                        "short_name": "Tigre",
+                        "url_name": "tigre",
+                        "id": "iid",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#073EAF",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "Racing Club",
+                        "short_name": "Racing",
+                        "url_name": "racing-club",
+                        "id": "ihg",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FFFFFF",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "tigre-vs-racing-club",
+                "status": {
+                    "enum": 1,
+                    "name": "Prog.",
+                    "short_name": "Prog.",
+                    "symbol_name": "Prog."
+                },
+                "start_time": "02-02-2026 19:45",
+                "game_time": -1,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Prog."
+            },
+            {
+                "id": "egdbhge",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Argentinos Juniors",
+                        "short_name": "Argentinos",
+                        "url_name": "argentinos-juniors",
+                        "id": "ihb",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#DD2D2F",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "Belgrano",
+                        "short_name": "Belgrano",
+                        "url_name": "belgrano",
+                        "id": "fhid",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#358FC8",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "argentinos-juniors-vs-belgrano",
+                "status": {
+                    "enum": 1,
+                    "name": "Prog.",
+                    "short_name": "Prog.",
+                    "symbol_name": "Prog."
+                },
+                "start_time": "02-02-2026 22:00",
+                "game_time": -1,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Prog."
+            },
+            {
+                "id": "egdcbfi",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Unión de Santa Fe",
+                        "short_name": "Unión",
+                        "url_name": "union-santa-fe",
+                        "id": "hcag",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#E93F2D",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "Gimnasia de Mendoza",
+                        "short_name": "Gimnasia (M)",
+                        "url_name": "gimnasia-mendoza",
+                        "id": "bbjbf",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#000000",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "union-santa-fe-vs-gimnasia-mendoza",
+                "status": {
+                    "enum": 1,
+                    "name": "Prog.",
+                    "short_name": "Prog.",
+                    "symbol_name": "Prog."
+                },
+                "start_time": "02-02-2026 22:00",
+                "game_time": -1,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Prog."
+            },
+            {
+                "id": "egdcbfh",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Banfield",
+                        "short_name": "Banfield",
+                        "url_name": "banfield",
+                        "id": "ihi",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#16A150",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "Estudiantes RC",
+                        "short_name": "Estudiantes RC",
+                        "url_name": "estudiantes-rio-cuarto",
+                        "id": "bheaf",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#77B8F2",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "banfield-vs-estudiantes-rio-cuarto",
+                "status": {
+                    "enum": 1,
+                    "name": "Prog.",
+                    "short_name": "Prog.",
+                    "symbol_name": "Prog."
+                },
+                "start_time": "03-02-2026 19:00",
+                "game_time": -1,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Prog."
+            },
+            {
+                "id": "egdbhgd",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Independiente Rivadavia",
+                        "short_name": "Ind. Rivadavia",
+                        "url_name": "independiente-rivadavia",
+                        "id": "hcch",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#14163F",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "Sarmiento Junín",
+                        "short_name": "Sarmiento",
+                        "url_name": "sarmiento-junin",
+                        "id": "hbbh",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#4AA575",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "independiente-rivadavia-vs-sarmiento-junin",
+                "status": {
+                    "enum": 1,
+                    "name": "Prog.",
+                    "short_name": "Prog.",
+                    "symbol_name": "Prog."
+                },
+                "start_time": "03-02-2026 21:15",
+                "game_time": -1,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Prog."
+            },
+            {
+                "id": "egdbhgj",
+                "stage_round_name": "Fecha 3",
+                "winner": -1,
+                "teams": [
+                    {
+                        "name": "Instituto",
+                        "short_name": "Instituto",
+                        "url_name": "instituto-ac-cordoba",
+                        "id": "hchc",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#FF0000",
+                            "text_color": "#000000"
+                        },
+                        "red_cards": 0
+                    },
+                    {
+                        "name": "Lanús",
+                        "short_name": "Lanús",
+                        "url_name": "lanus",
+                        "id": "igj",
+                        "country_id": "ba",
+                        "allow_open": true,
+                        "colors": {
+                            "color": "#9D2A30",
+                            "text_color": "#FFFFFF"
+                        },
+                        "red_cards": 0
+                    }
+                ],
+                "url_name": "instituto-ac-cordoba-vs-lanus",
+                "status": {
+                    "enum": 1,
+                    "name": "Prog.",
+                    "short_name": "Prog.",
+                    "symbol_name": "Prog."
+                },
+                "start_time": "03-02-2026 21:15",
+                "game_time": -1,
+                "game_time_to_display": "",
+                "game_time_status_to_display": "Prog."
+            }
+        ]
+    }
+}
