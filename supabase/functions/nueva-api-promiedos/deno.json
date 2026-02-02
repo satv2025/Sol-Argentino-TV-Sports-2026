@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "deno.ns",
+      "deno.window"
+    ]
+  },
+  "imports": {
+    "cheerio": "https://esm.sh/cheerio@1.0.0-rc.12"
+  }
+}

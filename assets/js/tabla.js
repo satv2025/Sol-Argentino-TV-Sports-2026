@@ -3,8 +3,6 @@ const sb = supabase.createClient(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwemd4dmtlZHNkampoenp5eXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MzQwOTAsImV4cCI6MjA4NTExMDA5MH0.RgFghlZVV4Ww27rfh96nTiafDwRu9jtC3S6Y6aFdIxE"
 );
 
-/* ================= TABLA ================= */
-
 // Función para renderizar las zonas (Zona A y Zona B)
 function renderZona(id, titulo, data) {
     const el = document.getElementById(id);
@@ -27,8 +25,6 @@ function renderZona(id, titulo, data) {
     `).join("")}
   `;
 }
-
-/* ================= FIXTURE ================= */
 
 // Función para renderizar los partidos
 function renderFixture(games) {
@@ -61,8 +57,6 @@ function renderFixture(games) {
     </div>
     `).join("");
 }
-
-/* ================= CARGAR DATOS ================= */
 
 // Función para cargar los datos desde la API de Supabase
 async function loadData() {
