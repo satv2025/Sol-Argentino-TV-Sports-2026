@@ -30,7 +30,6 @@ async function cargarArticulo() {
 
         if (!id) return;
 
-
         /* =============================
            ARTICULO
         ============================= */
@@ -47,9 +46,19 @@ async function cargarArticulo() {
         }
 
         document.title = art.titulo + " | SATV Sports";
-
         $("h1article").textContent = art.titulo;
 
+        /* =============================
+           CARGAR CSS DINÁMICAMENTE
+        ============================= */
+
+        const customCSSFileName = `${art.titulo}-${art.slug}-${id}.css`; // Nombre dinámico del archivo CSS
+
+        // Crear un nuevo <link> para cargar el archivo CSS desde Vercel
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = `https://your-vercel-url.com/css/base.css?v=${customCSSFileName}`; // Usamos un query string para evitar el cache
+        document.head.appendChild(link);
 
         /* =============================
            IMAGEN
@@ -61,7 +70,6 @@ async function cargarArticulo() {
         } else {
             $("imgArticle").style.display = "none";
         }
-
 
         /* =============================
            CONTENIDO BASE
@@ -76,7 +84,6 @@ async function cargarArticulo() {
                 .map(t => `<p>${t.trim()}</p>`)
                 .join("");
         }
-
 
         /* =============================
            VIDEOS (SOLO REEMPLAZO)
@@ -106,7 +113,6 @@ async function cargarArticulo() {
             const regex = new RegExp(`\\{video-${v.orden}\\}`, "g");
             html = html.replace(regex, player);
         });
-
 
         /* =============================
            RENDER
