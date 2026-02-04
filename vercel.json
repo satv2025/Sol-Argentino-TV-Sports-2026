@@ -3,6 +3,10 @@
     "trailingSlash": false,
     "rewrites": [
         {
+            "source": "/articulos/afa/apertura/assets/css/:id.css",
+            "destination": "/articulos/afa/apertura/assets/css/base.css"
+        },
+        {
             "source": "/:path*/",
             "destination": "/:path*/index.html"
         },

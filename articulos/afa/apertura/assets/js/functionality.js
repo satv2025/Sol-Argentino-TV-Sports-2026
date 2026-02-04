@@ -52,7 +52,8 @@ async function cargarArticulo() {
            CARGAR CSS DINÁMICAMENTE
         ============================= */
 
-        const customCSSFileName = `${id}.css`; // Nombre único basado solo en el ID
+        // Usar solo el id para generar el nombre del archivo CSS
+        const customCSSFileName = `${id}.css`; // El nombre del archivo será solo el id
 
         // Elimina cualquier CSS previamente cargado (si existe)
         const existingLink = document.querySelector('link[rel="stylesheet"]');
@@ -63,7 +64,8 @@ async function cargarArticulo() {
         // Crear un nuevo <link> para cargar el archivo CSS dinámico basado en el ID
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/base.css?v=${customCSSFileName}`; // URL con el nuevo nombre dinámico
+        // Usamos la URL dinámica que apunta a {id}.css
+        link.href = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/${customCSSFileName}`;
         document.head.appendChild(link);
 
         /* =============================
