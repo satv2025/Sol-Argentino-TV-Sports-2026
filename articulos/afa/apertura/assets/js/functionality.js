@@ -52,12 +52,18 @@ async function cargarArticulo() {
            CARGAR CSS DINÁMICAMENTE
         ============================= */
 
-        const customCSSFileName = `${art.titulo}-${art.slug}-${id}.css`; // Nombre dinámico del archivo CSS
+        const customCSSFileName = `${id}.css`; // Nombre único basado solo en el ID
 
-        // Cargar el archivo CSS desde la URL correcta de Vercel
+        // Elimina cualquier CSS previamente cargado (si existe)
+        const existingLink = document.querySelector('link[rel="stylesheet"]');
+        if (existingLink) {
+            existingLink.remove();
+        }
+
+        // Crear un nuevo <link> para cargar el archivo CSS dinámico basado en el ID
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/base.css?v=${customCSSFileName}`; // URL correcta de Vercel
+        link.href = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/${customCSSFileName}`; // URL con el nuevo nombre dinámico
         document.head.appendChild(link);
 
         /* =============================
