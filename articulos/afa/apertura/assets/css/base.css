@@ -11,6 +11,8 @@
     font-family: "BarlowC", sans-serif;
 }
 
+media-player {}
+
 :root {
     --red: #ff2020;
     --redGlow: rgba(255, 32, 32, .45);
@@ -143,6 +145,11 @@ body {
     font-size: 1.15rem;
     line-height: 1.2;
     color: var(--textSoft);
+}
+
+.video-wrapper {
+    margin-top: 0em !important;
+    margin-bottom: 3em !important;
 }
 
 #contenidoArticle p {
