@@ -106,7 +106,12 @@ body {
 #articulo {
     max-width: 900px;
     margin: 60px auto;
-    padding: 0 25px 80px;
+    background: radial-gradient(circle at 50% -15%, var(--redGlow), transparent 60%), linear-gradient(to bottom, #1e2844 50%, #1e2844);
+    padding-left: 4em;
+    padding-right: 4em;
+    border-radius: 0.6em;
+    padding-bottom: 2em;
+    padding-top: 2em;
 }
 
 
@@ -116,16 +121,11 @@ body {
 
 .backBtn {
     display: inline-block;
-
-    margin-bottom: 35px;
-
     color: var(--red);
     font-weight: 800;
     text-decoration: none;
-
     padding: 8px 14px;
     border-radius: 8px;
-
     transition: .2s;
 }
 
@@ -141,7 +141,7 @@ body {
 
 #contenidoArticle {
     font-size: 1.15rem;
-    line-height: 1.8;
+    line-height: 1.2;
     color: var(--textSoft);
 }
 
