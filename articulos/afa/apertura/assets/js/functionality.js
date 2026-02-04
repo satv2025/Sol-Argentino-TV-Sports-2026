@@ -23,78 +23,98 @@ const $ = id => document.getElementById(id);
 
 async function cargarArticulo() {
 
-    const params = new URLSearchParams(location.search);
-    const id = params.get("id");
+    try {
 
-    if (!id) return;
+        const params = new URLSearchParams(location.search);
+        const id = params.get("id");
 
-    const { data: art, error } = await sb
-        .from("articulos")
-        .select("*")
-        .eq("id", id)
-        .single();
-
-    if (error || !art) {
-        console.error("Artículo no encontrado");
-        return;
-    }
-
-    document.title = art.titulo + " | SATV Sports";
-
-    $("h1article").textContent = art.titulo;
-
-    if (art.imagen) {
-        $("imgArticle").src = art.imagen;
-    } else {
-        $("imgArticle").style.display = "none";
-    }
+        if (!id) return;
 
 
-    /* =============================
-       CONTENIDO BASE
-    ============================= */
+        /* =============================
+           ARTICULO
+        ============================= */
 
-    let html = art.contenido || "";
+        const { data: art, error } = await sb
+            .from("articulos")
+            .select("*")
+            .eq("id", id)
+            .single();
 
-    if (!html.includes("<p>")) {
-        html = html
-            .split("\n\n")
-            .map(t => `<p>${t}</p>`)
-            .join("");
-    }
+        if (error || !art) {
+            console.error("Artículo no encontrado");
+            return;
+        }
+
+        document.title = art.titulo + " | SATV Sports";
+
+        $("h1article").textContent = art.titulo;
 
 
-    /* =============================
-       VIDEOS
-    ============================= */
+        /* =============================
+           IMAGEN
+        ============================= */
 
-    const { data: videos = [] } = await sb
-        .from("articulos_videos")
-        .select("*")
-        .eq("articulo_id", id)
-        .order("orden");
+        if (art.imagen) {
+            $("imgArticle").src = art.imagen;
+            $("imgArticle").style.display = "block";
+        } else {
+            $("imgArticle").style.display = "none";
+        }
 
-    videos.forEach(v => {
 
-        const videoUrl = v.url;
-        const vttUrl = videoUrl.replace(/\.[^/.]+$/, ".vtt");
+        /* =============================
+           CONTENIDO BASE
+        ============================= */
 
-        const player = `
-      <div class="video-wrapper">
-        <media-player src="${videoUrl}" playsinline preload="metadata">
-          <media-provider></media-provider>
-          <media-video-layout thumbnails="${vttUrl}"></media-video-layout>
-        </media-player>
-      </div>
-    `;
+        let html = art.contenido || "";
 
-        const regex = new RegExp(`\\{video-${v.orden}\\}`, "g");
+        // Si no viene con <p>, lo formateamos automático
+        if (!html.includes("<p>")) {
+            html = html
+                .split("\n\n")
+                .map(t => `<p>${t.trim()}</p>`)
+                .join("");
+        }
 
-        if (regex.test(html))
+
+        /* =============================
+           VIDEOS (SOLO REEMPLAZO)
+        ============================= */
+
+        const { data: videos = [] } = await sb
+            .from("articulos_videos")
+            .select("*")
+            .eq("articulo_id", id)
+            .order("orden");
+
+        videos.forEach(v => {
+
+            const videoUrl = v.url;
+            const vttUrl = videoUrl.replace(/\.[^/.]+$/, ".vtt");
+
+            const player = `
+                <div class="video-wrapper">
+                    <media-player src="${videoUrl}" playsinline preload="metadata">
+                        <media-provider></media-provider>
+                        <media-video-layout thumbnails="${vttUrl}"></media-video-layout>
+                    </media-player>
+                </div>
+            `;
+
+            // SOLO reemplaza {video-x}
+            const regex = new RegExp(`\\{video-${v.orden}\\}`, "g");
             html = html.replace(regex, player);
-        else
-            html += player;
-    });
+        });
 
-    $("contenidoArticle").innerHTML = html;
+
+        /* =============================
+           RENDER
+        ============================= */
+
+        $("contenidoArticle").innerHTML = html;
+
+    } catch (err) {
+        console.error("Error cargando artículo:", err);
+    }
 }
