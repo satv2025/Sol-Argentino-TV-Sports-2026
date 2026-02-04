@@ -54,10 +54,10 @@ async function cargarArticulo() {
 
         const customCSSFileName = `${art.titulo}-${art.slug}-${id}.css`; // Nombre dinámico del archivo CSS
 
-        // Crear un nuevo <link> para cargar el archivo CSS desde Vercel
+        // Cargar el archivo CSS desde la URL correcta de Vercel
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `https://https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/base.css?v=${customCSSFileName}`; // Usamos un query string para evitar el cache
+        link.href = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/base.css?v=${customCSSFileName}`; // URL correcta de Vercel
         document.head.appendChild(link);
 
         /* =============================
@@ -77,7 +77,7 @@ async function cargarArticulo() {
 
         let html = art.contenido || "";
 
-        // Si no viene con <p>, lo formateamos automático
+        // Si no viene con <p>, lo formateamos automáticamente
         if (!html.includes("<p>")) {
             html = html
                 .split("\n\n")
