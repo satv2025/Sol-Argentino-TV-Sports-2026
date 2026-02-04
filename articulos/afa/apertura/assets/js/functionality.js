@@ -63,7 +63,7 @@ async function cargarArticulo() {
         // Crear un nuevo <link> para cargar el archivo CSS dinámico basado en el ID
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/${customCSSFileName}`; // URL con el nuevo nombre dinámico
+        link.href = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/base.css?v=${customCSSFileName}`; // URL con el nuevo nombre dinámico
         document.head.appendChild(link);
 
         /* =============================
