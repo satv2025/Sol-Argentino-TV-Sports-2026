@@ -354,7 +354,7 @@ body {
 }
 
 /* =============================
-   🌐 WEBKIT (Chrome, Brave, Edge, Chromium, Safari)
+   🌐 WEBKIT
 ============================= */
 
 ::-webkit-scrollbar {
@@ -362,49 +362,66 @@ body {
     height: 12px;
 }
 
+/* TRACK — rojo → violeta smooth */
 ::-webkit-scrollbar-track {
     background:
-        radial-gradient(circle at 50% -15%, var(--redGlow), transparent 60%),
-        linear-gradient(to bottom, var(--dark1) 0%, var(--dark2) 50%, var(--dark3) 100%);
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(255, 70, 70, .35),
+            transparent 60%
+        ),
+        linear-gradient(
+            to bottom,
+            #ff2b2b 0%,
+            #e01a4f 25%,
+            #b3157a 50%,
+            #7a1bbd 75%,
+            #1a0b66 100%
+        );
 }
 
+/* THUMB */
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(219, 121, 121);
-    transition: background-color .2s ease;
+    background-color: rgb(219,121,121);
+    transition: all .2s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: #ff1f1f;
-}
+/* =============================
+   fixtureBox override
+============================= */
 
-/* fixtureBox override */
 #fixtureBox::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
+#fixtureBox::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 #fixtureBox::-webkit-scrollbar-thumb {
-    background-color: rgb(128, 128, 128);
+    background-color: rgb(128,128,128);
     border-radius: 10px;
 }
 
 #fixtureBox::-webkit-scrollbar-thumb:hover {
-    background-color: #CCCCCC;
+    background-color: #ccc;
 }
 
+
 /* =============================
-   🦊 FIREFOX ONLY (fallback)
+   🦊 FIREFOX
 ============================= */
 
 @supports not selector(::-webkit-scrollbar) {
 
-    * {
+    body {
         scrollbar-width: thin;
-        scrollbar-color: rgb(219, 121, 121) transparent;
+        scrollbar-color: rgb(219,121,121) transparent;
     }
 
     #fixtureBox {
         scrollbar-width: thin;
-        scrollbar-color: rgb(128, 128, 128) transparent;
+        scrollbar-color: rgb(128,128,128) transparent;
     }
 }
