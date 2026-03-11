@@ -4,7 +4,7 @@
    FONTS
 ===================================================== */
 
-@import url("https://solargentinotv.com.ar/assets/fonts/Barlow/Barlow.css");
+@import url("https: //solargentinotv.com.ar/assets/fonts/Acto/Acto.css");
 
 /* =====================================================
    RESET
@@ -14,7 +14,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "BarlowC";
+    font-family: "Acto" !important;
 }
 
 a {
