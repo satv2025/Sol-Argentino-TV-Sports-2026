@@ -15,6 +15,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Acto" !important;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 a {
@@ -194,7 +196,7 @@ body {
 
 .newsCard {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     gap: 0;
     padding: 0;
     background: linear-gradient(180deg, #111622 0%, #0c1018 100%);
