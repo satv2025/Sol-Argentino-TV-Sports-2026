@@ -43,9 +43,7 @@ const matches = [
         away: "San Lorenzo",
         estadio: "Tomás Adolfo Ducó - Palacio Ducó",
         ciudad: "Parque de los Patricios, Ciudad Autónoma de Buenos Aires",
-        hora: "19:15",
-        canal: "TNT Sports Premium / ESPN Premium",
-        date: "08/02/2026"
+        resultadofinal: "HUR | 1 | 0 | SLO"
     },
     {
         img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg",
@@ -61,66 +59,83 @@ const matches = [
     {
         img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Newells-vs-Rosario-Central.jpg",
         fecha: "8",
-        home: "Newells",
+        home: "Newell's",
         away: "Rosario Central",
         estadio: "Marcelo Bielsa - El Coloso del Parque",
         ciudad: "Rosario, Provincia de Santa Fe",
-        hora: "17:00",
-        canal: "TNT Sports Premium / ESPN Premium",
-        date: "01/03/2026"
+        resultadofinal: "NOB | 0 | 2 | CEN"
     }
 ];
 
 
-function initSlider() {
+/* =====================================================
+   RENDER HTML DE CADA PARTIDO
+===================================================== */
 
+function renderMatchInfo(m) {
+    const esFinalizado = Boolean(m.resultadofinal);
+
+    return `
+        <div class="matchFecha">Fecha: ${m.fecha ?? ""}</div>
+
+        <div class="matchTitle">
+            ${m.home ?? ""} – ${m.away ?? ""}
+        </div>
+
+        <div class="matchMeta">
+            <span class="stadium">Estadio: ${m.estadio ?? ""}</span>
+            <span>Ciudad: ${m.ciudad ?? ""}</span>
+
+            ${esFinalizado
+            ? `
+                        <span class="matchDate">Resultado final: ${m.resultadofinal}</span>
+                        <span class="badge">Finalizado</span>
+                    `
+            : `
+                        <span>Hora: ${m.hora ?? "A confirmar"}</span>
+                        <span class="matchDate">${m.date ?? ""}</span>
+                        <span class="badge">${m.canal ?? ""}</span>
+                    `
+        }
+        </div>
+    `;
+}
+
+
+/* =====================================================
+   INIT SLIDER
+===================================================== */
+
+function initSlider() {
     const slider = $("matchSlider");
     if (!slider) return;
+
+    slider.innerHTML = "";
 
     const slides = [];
 
     matches.forEach((m, i) => {
-
         const slide = document.createElement("div");
         slide.className = "slide";
 
         /* ========= DESKTOP =========
-           usamos background (tu método original)
+           usamos background
         */
         slide.style.backgroundImage =
             `linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.85)),url(${m.img})`;
 
         /* ========= MOBILE =========
-           agregamos <img> REAL
-           CSS lo mostrará solo en responsive
+           agregamos <img> real
         */
         const img = document.createElement("img");
         img.className = "slide-img";
         img.src = m.img;
         img.alt = `${m.home} vs ${m.away}`;
 
-        /* ========= DATOS ========= */
-
         const overlay = document.createElement("div");
         overlay.className = "overlay";
+        overlay.innerHTML = renderMatchInfo(m);
 
-        overlay.innerHTML = `
-            <div class="matchFecha">Fecha: ${m.fecha}</div>
-
-            <div class="matchTitle">
-                ${m.home} – ${m.away}
-            </div>
-
-            <div class="matchMeta">
-                <span class="stadium">Estadio: ${m.estadio}</span>
-                <span>Ciudad: ${m.ciudad}</span>
-                <span>Hora: ${m.hora}</span>
-                <span class="matchDate">${m.date}</span>
-                <span class="badge">${m.canal}</span>
-            </div>
-        `;
-
-        /* orden: img arriba, datos abajo */
         slide.appendChild(img);
         slide.appendChild(overlay);
 
@@ -130,7 +145,7 @@ function initSlider() {
         slider.appendChild(slide);
     });
 
-    /* ========= AUTO ROTACIÓN ========= */
+    if (slides.length <= 1) return;
 
     let index = 0;
 
@@ -159,7 +174,6 @@ const slugify = t =>
 ===================================================== */
 
 async function cargarNoticiasDeportes() {
-
     const container = $("homeNoticias");
     if (!container) return;
 
@@ -182,7 +196,6 @@ async function cargarNoticiasDeportes() {
     container.innerHTML = "";
 
     data.forEach(n => {
-
         const date = new Date(n.fecha_creacion)
             .toISOString()
             .split("T")[0];
@@ -204,7 +217,9 @@ async function cargarNoticiasDeportes() {
             </div>
         `;
 
-        card.addEventListener("click", () => location.href = url);
+        card.addEventListener("click", () => {
+            location.href = url;
+        });
 
         container.appendChild(card);
     });

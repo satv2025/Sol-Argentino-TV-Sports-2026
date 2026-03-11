@@ -425,3 +425,13 @@ body {
         scrollbar-color: rgb(128,128,128) transparent;
     }
 }
+
+.player-number {
+    display: inline-block;
+    font-size: clamp(24px, 2vw, 27px) !important;
+    font-weight: 1000 !important;
+    line-height: 0.95 !important;
+    position: relative !important;
+    top: 0.08em !important;
+    white-space: nowrap !important;
+}
