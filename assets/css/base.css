@@ -20,7 +20,6 @@
 a {
     text-decoration: none;
     color: #fff;
-    max-width: 5em;
 }
 
 a:hover {
@@ -365,24 +364,20 @@ body {
 /* TRACK — rojo → violeta smooth */
 ::-webkit-scrollbar-track {
     background:
-        radial-gradient(
-            circle at 50% -15%,
+        radial-gradient(circle at 50% -15%,
             rgba(255, 70, 70, .35),
-            transparent 60%
-        ),
-        linear-gradient(
-            to bottom,
+            transparent 60%),
+        linear-gradient(to bottom,
             #ff2b2b 0%,
             #e01a4f 25%,
             #b3157a 50%,
             #7a1bbd 75%,
-            #1a0b66 100%
-        );
+            #1a0b66 100%);
 }
 
 /* THUMB */
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(219,121,121);
+    background-color: rgb(219, 121, 121);
     transition: all .2s ease;
 }
 
@@ -400,7 +395,7 @@ body {
 }
 
 #fixtureBox::-webkit-scrollbar-thumb {
-    background-color: rgb(128,128,128);
+    background-color: rgb(128, 128, 128);
     border-radius: 10px;
 }
 
@@ -417,12 +412,12 @@ body {
 
     body {
         scrollbar-width: thin;
-        scrollbar-color: rgb(219,121,121) transparent;
+        scrollbar-color: rgb(219, 121, 121) transparent;
     }
 
     #fixtureBox {
         scrollbar-width: thin;
-        scrollbar-color: rgb(128,128,128) transparent;
+        scrollbar-color: rgb(128, 128, 128) transparent;
     }
 }
 

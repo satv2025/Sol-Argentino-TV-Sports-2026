@@ -43,7 +43,7 @@ const matches = [
         away: "San Lorenzo",
         estadio: "Tomás Adolfo Ducó - Palacio Ducó",
         ciudad: "Parque de los Patricios",
-        resultadofinal: "HUR 1-0SLO"
+        resultadofinal: "HUR 1-0 SLO"
     },
     {
         img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg",
