@@ -42,8 +42,8 @@ const matches = [
         home: "Huracán",
         away: "San Lorenzo",
         estadio: "Tomás Adolfo Ducó - Palacio Ducó",
-        ciudad: "Parque de los Patricios, Ciudad Autónoma de Buenos Aires",
-        resultadofinal: "HUR | 1 | 0 | SLO"
+        ciudad: "Parque de los Patricios",
+        resultadofinal: "HUR 1-0SLO"
     },
     {
         img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg",
@@ -63,7 +63,7 @@ const matches = [
         away: "Rosario Central",
         estadio: "Marcelo Bielsa - El Coloso del Parque",
         ciudad: "Rosario, Provincia de Santa Fe",
-        resultadofinal: "NOB | 0 | 2 | CEN"
+        resultadofinal: "NOB 0-2 CEN"
     }
 ];
 
