@@ -9,9 +9,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Acto" !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
-
-media-player {}
 
 :root {
     --red: #ff2020;
@@ -56,15 +58,17 @@ body {
 }
 
 .logo {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .logo span {
-    color: var(--red);
-    text-shadow: 0 0 12px var(--redGlow);
+    color: #0ba35e;
+    text-shadow: 0 0 12px #28ef5bb3;
+    font-size: 32px;
 }
-
 
 /* =====================================================
    HERO
