@@ -186,7 +186,11 @@ body {
 
 .video-wrapper {
     margin-top: 0em !important;
-    margin-bottom: 3em !important;
+    margin-bottom: 0em !important;
+}
+
+.resugol {
+    margin-top: 2.3em;
 }
 
 #contenidoArticle p {
