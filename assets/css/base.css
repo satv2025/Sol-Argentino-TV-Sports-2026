@@ -264,8 +264,16 @@ body {
     .newsCard {
         flex-direction: column;
         align-items: stretch;
-        padding: 12px;
+        padding: 0 0 12px 0;
         gap: 12px;
+    }
+
+    article.newsCard img {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        height: auto;
     }
 
     .newsCard img {
