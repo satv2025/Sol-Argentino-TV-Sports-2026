@@ -21,30 +21,10 @@ const $ = id => document.getElementById(id);
 
 
 /* =====================================================
-   SLIDER PARTIDOS (PRO + RESPONSIVE REAL)
+   SLIDER PARTIDOS
 ===================================================== */
 
 const matches = [
-    {
-        img: "assets/images/rivboc1.png",
-        fecha: "15",
-        home: "River Plate",
-        away: "Boca Juniors",
-        estadio: "Mâs Monumental - Antonio Vespucio Liberti",
-        ciudad: "Núñez, Ciudad Autónoma de Buenos Aires",
-        hora: "A confirmar",
-        canal: "TNT Sports Premium / ESPN Premium",
-        date: "04/2026 (a confirmar)"
-    },
-    {
-        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Huracan-vs-San-Lorenzo.jpg.webp",
-        fecha: "4",
-        home: "Huracán",
-        away: "San Lorenzo",
-        estadio: "Tomás Adolfo Ducó - Palacio Ducó",
-        ciudad: "Parque de los Patricios",
-        resultadofinal: "HUR 1-0 SLO"
-    },
     {
         img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg",
         fecha: "13",
@@ -52,18 +32,42 @@ const matches = [
         away: "Racing",
         estadio: "Libertadores de América – Ricardo Enrique Bochini",
         ciudad: "Avellaneda, Provincia de Buenos Aires",
-        hora: "A confirmar",
+        hora: "17:30",
         canal: "TNT Sports Premium / ESPN Premium",
-        date: "04/2026 (a confirmar)"
+        date: "04/04/2026",
+        day: "Sábado",
+        transmision: {
+            tnt: {
+                relatos: "Pablo Giralt",
+                comentarios: "Juan Pablo Varsky"
+            },
+            espn: {
+                relatos: "Sebastián Vignolo",
+                comentarios: "Diego Latorre"
+            }
+        }
     },
     {
-        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Newells-vs-Rosario-Central.jpg",
-        fecha: "8",
-        home: "Newell's",
-        away: "Rosario Central",
-        estadio: "Marcelo Bielsa - El Coloso del Parque",
-        ciudad: "Rosario, Provincia de Santa Fe",
-        resultadofinal: "NOB 0-2 CEN"
+        img: "assets/images/rivboc1.png",
+        fecha: "15",
+        home: "River Plate",
+        away: "Boca Juniors",
+        estadio: "Mâs Monumental - Antonio Vespucio Liberti",
+        ciudad: "Núñez, Ciudad Autónoma de Buenos Aires",
+        hora: "17:00",
+        canal: "TNT Sports Premium / ESPN Premium",
+        date: "19/04/2026",
+        day: "Domingo",
+        transmision: {
+            tnt: {
+                relatos: "Pablo Giralt",
+                comentarios: "Juan Pablo Varsky"
+            },
+            espn: {
+                relatos: "Sebastián Vignolo",
+                comentarios: "Diego Latorre"
+            }
+        }
     }
 ];
 
@@ -72,11 +76,34 @@ const matches = [
    RENDER HTML DE CADA PARTIDO
 ===================================================== */
 
+function renderTransmision(transmision) {
+    if (!transmision) return "";
+
+    const tntRelatos = transmision.tnt?.relatos ?? "-";
+    const tntComentarios = transmision.tnt?.comentarios ?? "-";
+    const espnRelatos = transmision.espn?.relatos ?? "-";
+    const espnComentarios = transmision.espn?.comentarios ?? "-";
+
+    return `
+        <div class="transmisionBox">
+            <div class="transmisionTitle">Transmisión</div>
+
+            <span class="tvLine">
+                <strong>TNT:</strong> Relatos: ${tntRelatos} · Comentarios: ${tntComentarios}
+            </span>
+
+            <span class="tvLine">
+                <strong>ESPN:</strong> Relatos: ${espnRelatos} · Comentarios: ${espnComentarios}
+            </span>
+        </div>
+    `;
+}
+
 function renderMatchInfo(m) {
     const esFinalizado = Boolean(m.resultadofinal);
 
     return `
-        <div class="matchFecha">Fecha: ${m.fecha ?? ""}</div>
+        <div class="matchFecha">Fecha ${m.fecha ?? ""}</div>
 
         <div class="matchTitle">
             ${m.home ?? ""} – ${m.away ?? ""}
@@ -92,9 +119,11 @@ function renderMatchInfo(m) {
                         <span class="badge">Finalizado</span>
                     `
             : `
-                        <span>Hora: ${m.hora ?? "A confirmar"}</span>
-                        <span class="matchDate">${m.date ?? ""}</span>
+                        <span class="matchDay">Día: ${m.day ?? ""}</span>
+                        <span class="matchDate">Fecha: ${m.date ?? ""}</span>
+                        <span class="matchTime">Hora: ${m.hora ?? "A confirmar"}</span>
                         <span class="badge">${m.canal ?? ""}</span>
+                        ${renderTransmision(m.transmision)}
                     `
         }
         </div>
@@ -111,22 +140,15 @@ function initSlider() {
     if (!slider) return;
 
     slider.innerHTML = "";
-
     const slides = [];
 
     matches.forEach((m, i) => {
         const slide = document.createElement("div");
         slide.className = "slide";
 
-        /* ========= DESKTOP =========
-           usamos background
-        */
         slide.style.backgroundImage =
-            `linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.85)),url(${m.img})`;
+            `linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.85)), url(${m.img})`;
 
-        /* ========= MOBILE =========
-           agregamos <img> real
-        */
         const img = document.createElement("img");
         img.className = "slide-img";
         img.src = m.img;
@@ -202,8 +224,7 @@ async function cargarNoticiasDeportes() {
 
         const name = n.slug || slugify(n.titulo);
 
-        const url =
-            `/articulos/afa/apertura/articulo.html?date=${date}&name=${name}&id=${n.id}`;
+        const url = `/articulos/afa/apertura/articulo.html?date=${date}&name=${name}&id=${n.id}`;
 
         const card = document.createElement("article");
         card.className = "newsCard";
