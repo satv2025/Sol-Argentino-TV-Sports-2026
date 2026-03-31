@@ -14,10 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const sb = supabase.createClient(
     "https://api.solargentinotv.com.ar",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwemd4dmtlZHNkampoenp5eXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MzQwOTAsImV4cCI6MjA4NTExMDA5MH0.RgFghlZVV4Ww27rfh96nTiafDwRu9jtC3S6Y6aFdIxE"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwemd4dmtlZHNkampoenp5eXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MzQwOTAsImV4cCI6MjA4NTExMDA5MH0.RgFghlZVV4Ww27rfh96nTiafDwRu9jtC3S6Y6aFdIxE"
 );
 
 const $ = id => document.getElementById(id);
+
+/* =====================================================
+   LOGOS CANALES
+===================================================== */
+
+const CHANNEL_LOGOS = {
+    tnt: "assets/images/TNT Sports Premium Logo.png",
+    espn: "assets/images/ESPN_Premium_logo.svg.png"
+};
 
 
 /* =====================================================
@@ -33,7 +42,6 @@ const matches = [
         estadio: "Libertadores de América – Ricardo Enrique Bochini",
         ciudad: "Avellaneda, Provincia de Buenos Aires",
         hora: "17:30",
-        canal: "TNT Sports Premium / ESPN Premium",
         date: "04/04/2026",
         day: "Sábado",
         transmision: {
@@ -55,7 +63,6 @@ const matches = [
         estadio: "Mâs Monumental - Antonio Vespucio Liberti",
         ciudad: "Núñez, Ciudad Autónoma de Buenos Aires",
         hora: "17:00",
-        canal: "TNT Sports Premium / ESPN Premium",
         date: "19/04/2026",
         day: "Domingo",
         transmision: {
@@ -73,7 +80,20 @@ const matches = [
 
 
 /* =====================================================
-   RENDER HTML DE CADA PARTIDO
+   RENDER CANALES
+===================================================== */
+
+function renderCanalBadges() {
+    return `
+        <div class="badge canalBadge">
+            <img class="canalLogo" src="${CHANNEL_LOGOS.tnt}" alt="TNT Sports Premium">
+            <img class="canalLogo" src="${CHANNEL_LOGOS.espn}" alt="ESPN Premium">
+        </div>
+    `;
+}
+
+/* =====================================================
+   RENDER TRANSMISION
 ===================================================== */
 
 function renderTransmision(transmision) {
@@ -89,15 +109,27 @@ function renderTransmision(transmision) {
             <div class="transmisionTitle">Transmisión</div>
 
             <span class="tvLine">
-                <strong>TNT:</strong> Relatos: ${tntRelatos} · Comentarios: ${tntComentarios}
+                <img class="tvLogoTall" src="${CHANNEL_LOGOS.tnt}" alt="TNT Sports Premium">
+                <span class="tvText">
+                    <span class="tvInfo">Relatos: ${tntRelatos}</span>
+                    <span class="tvInfo">Comentarios: ${tntComentarios}</span>
+                </span>
             </span>
 
             <span class="tvLine">
-                <strong>ESPN:</strong> Relatos: ${espnRelatos} · Comentarios: ${espnComentarios}
+                <img class="tvLogoTall" src="${CHANNEL_LOGOS.espn}" alt="ESPN Premium">
+                <span class="tvText">
+                    <span class="tvInfo">Relatos: ${espnRelatos}</span>
+                    <span class="tvInfo">Comentarios: ${espnComentarios}</span>
+                </span>
             </span>
         </div>
     `;
 }
+
+/* =====================================================
+   RENDER HTML DE CADA PARTIDO
+===================================================== */
 
 function renderMatchInfo(m) {
     const esFinalizado = Boolean(m.resultadofinal);
@@ -115,16 +147,16 @@ function renderMatchInfo(m) {
 
             ${esFinalizado
             ? `
-                        <span class="matchDate">Resultado final: ${m.resultadofinal}</span>
-                        <span class="badge">Finalizado</span>
-                    `
+                    <span class="matchDate">Resultado final: ${m.resultadofinal}</span>
+                    <span class="badge">Finalizado</span>
+                `
             : `
-                        <span class="matchDay">Día: ${m.day ?? ""}</span>
-                        <span class="matchDate">Fecha: ${m.date ?? ""}</span>
-                        <span class="matchTime">Hora: ${m.hora ?? "A confirmar"}</span>
-                        <span class="badge">${m.canal ?? ""}</span>
-                        ${renderTransmision(m.transmision)}
-                    `
+                    <span class="matchDay">Día: ${m.day ?? ""}</span>
+                    <span class="matchDate">Fecha: ${m.date ?? ""}</span>
+                    <span class="matchTime">Hora: ${m.hora ?? "A confirmar"}</span>
+                    ${renderCanalBadges()}
+                    ${renderTransmision(m.transmision)}
+                `
         }
         </div>
     `;
