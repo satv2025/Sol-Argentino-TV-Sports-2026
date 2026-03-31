@@ -85,7 +85,7 @@ const matches = [
 
 function renderCanalBadges() {
     return `
-        <div class="badge canalBadge">
+        <div class="badge canalBadge">Transmite
             <img class="canalLogo" src="${CHANNEL_LOGOS.tnt}" alt="TNT Sports Premium">
             <img class="canalLogo" src="${CHANNEL_LOGOS.espn}" alt="ESPN Premium">
         </div>
