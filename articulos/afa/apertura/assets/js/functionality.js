@@ -1,38 +1,174 @@
 /* =====================================================
    INIT
 ===================================================== */
-
 document.addEventListener("DOMContentLoaded", cargarArticulo);
-
 
 /* =====================================================
    SUPABASE
 ===================================================== */
-
 const sb = supabase.createClient(
     "https://api.solargentinotv.com.ar",
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwemd4dmtlZHNkampoenp5eXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MzQwOTAsImV4cCI6MjA4NTExMDA5MH0.RgFghlZVV4Ww27rfh96nTiafDwRu9jtC3S6Y6aFdIxE"
 );
 
-const $ = id => document.getElementById(id);
+const $ = (id) => document.getElementById(id);
 
+/* =====================================================
+   HELPERS
+===================================================== */
+function escapeHtml(s = "") {
+    return s
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+function buildPlayer(videoUrl) {
+    const vttUrl = videoUrl.replace(/\.[^/.]+$/, ".vtt");
+
+    return `
+    <div class="video-wrapper">
+      <media-player src="${videoUrl}" playsinline preload="metadata">
+        <media-provider></media-provider>
+        <media-video-layout thumbnails="${vttUrl}"></media-video-layout>
+      </media-player>
+    </div>
+  `;
+}
+
+/* =====================================================
+   DROPDOWN RENDER
+===================================================== */
+function groupVideosBySignal(videos) {
+    const groups = {};
+    for (const v of videos) {
+        if (!v.grupo) continue;
+        const key = v.grupo;
+        if (!groups[key]) {
+            groups[key] = {
+                id: key,
+                label: v.label_grupo || key,
+                videos: []
+            };
+        }
+        groups[key].videos.push(v);
+    }
+
+    for (const k of Object.keys(groups)) {
+        groups[k].videos.sort((a, b) => (a.orden || 0) - (b.orden || 0));
+    }
+
+    return groups;
+}
+
+function renderSignalsDropdownHTML({ title, groups, dropdownId }) {
+    const keys = Object.keys(groups);
+
+    if (!keys.length) {
+        return `<div class="signals-empty">No hay videos cargados para señales.</div>`;
+    }
+
+    const firstKey = keys[0];
+    const firstLabel = groups[firstKey]?.label || firstKey;
+
+    const itemsHtml = keys
+        .map((k) => `
+            <div 
+                class="signalsDropdownItem" 
+                data-value="${escapeHtml(k)}"
+            >
+                ${escapeHtml(groups[k].label)}
+            </div>
+        `)
+        .join("");
+
+    return `
+    <div class="signalsWrap" id="${dropdownId}">
+      <div class="signalsTop">
+        <div class="signalsTitle">${escapeHtml(title || "Elegí la señal")}</div>
+
+        <div class="signalsDropdown" data-open="false">
+          <button type="button" class="signalsDropdownBtn" data-value="${escapeHtml(firstKey)}">
+            <span class="signalsDropdownBtnText">${escapeHtml(firstLabel)}</span>
+            <span class="signalsDropdownArrow">▾</span>
+          </button>
+
+          <div class="signalsDropdownMenu">
+            ${itemsHtml}
+          </div>
+        </div>
+      </div>
+
+      <div class="signalsVideos"></div>
+    </div>
+  `;
+}
+
+function paintSignalVideos(dropdownId, groups, signalId) {
+    const wrap = document.getElementById(dropdownId);
+    if (!wrap) return;
+
+    const box = wrap.querySelector(".signalsVideos");
+    const g = groups[signalId];
+
+    if (!g || !g.videos.length) {
+        box.innerHTML = `<div class="signals-empty">No hay videos para esta señal.</div>`;
+        return;
+    }
+
+    box.innerHTML = g.videos.map(v => buildPlayer(v.url)).join("");
+}
+
+function initSignalsDropdown(dropdownId, groups) {
+    const wrap = document.getElementById(dropdownId);
+    if (!wrap) return;
+
+    const dropdown = wrap.querySelector(".signalsDropdown");
+    const btn = wrap.querySelector(".signalsDropdownBtn");
+    const btnText = wrap.querySelector(".signalsDropdownBtnText");
+    const items = wrap.querySelectorAll(".signalsDropdownItem");
+
+    const initialValue = btn?.dataset.value;
+    if (initialValue) {
+        paintSignalVideos(dropdownId, groups, initialValue);
+    }
+
+    btn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = dropdown.dataset.open === "true";
+        dropdown.dataset.open = isOpen ? "false" : "true";
+    });
+
+    items.forEach(item => {
+        item.addEventListener("click", () => {
+            const value = item.dataset.value;
+            const label = item.textContent.trim();
+
+            btn.dataset.value = value;
+            btnText.textContent = label;
+            dropdown.dataset.open = "false";
+
+            paintSignalVideos(dropdownId, groups, value);
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!wrap.contains(e.target)) {
+            dropdown.dataset.open = "false";
+        }
+    });
+}
 
 /* =====================================================
    LOAD ARTICLE
 ===================================================== */
-
 async function cargarArticulo() {
-
     try {
-
         const params = new URLSearchParams(location.search);
         const id = params.get("id");
-
         if (!id) return;
-
-        /* =============================
-           ARTICULO
-        ============================= */
 
         const { data: art, error } = await sb
             .from("articulos")
@@ -45,32 +181,20 @@ async function cargarArticulo() {
             return;
         }
 
-        document.title = art.titulo + " | SATV Sports";
+        document.title = `${art.titulo} | SATV Sports`;
         $("h1article").textContent = art.titulo;
 
-        /* =============================
-           CARGAR CSS DINÁMICAMENTE
-        ============================= */
+        const customCSSFileName = `${id}.css`;
+        const customHref = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/${customCSSFileName}`;
 
-        // Usar solo el id para generar el nombre del archivo CSS
-        const customCSSFileName = `${id}.css`; // El nombre del archivo será solo el id
+        const old = document.getElementById("articleCustomCss");
+        if (old) old.remove();
 
-        // Elimina cualquier CSS previamente cargado (si existe)
-        const existingLink = document.querySelector('link[rel="stylesheet"]');
-        if (existingLink) {
-            existingLink.remove();
-        }
-
-        // Crear un nuevo <link> para cargar el archivo CSS dinámico basado en el ID
         const link = document.createElement("link");
+        link.id = "articleCustomCss";
         link.rel = "stylesheet";
-        // Usamos la URL dinámica que apunta a {id}.css
-        link.href = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/${customCSSFileName}`;
+        link.href = customHref;
         document.head.appendChild(link);
-
-        /* =============================
-           IMAGEN
-        ============================= */
 
         if (art.imagen) {
             $("imgArticle").src = art.imagen;
@@ -79,54 +203,53 @@ async function cargarArticulo() {
             $("imgArticle").style.display = "none";
         }
 
-        /* =============================
-           CONTENIDO BASE
-        ============================= */
-
         let html = art.contenido || "";
 
-        // Si no viene con <p>, lo formateamos automáticamente
-        if (!html.includes("<p>")) {
+        if (html && !html.includes("<p>")) {
             html = html
                 .split("\n\n")
                 .map(t => `<p>${t.trim()}</p>`)
                 .join("");
         }
 
-        /* =============================
-           VIDEOS (SOLO REEMPLAZO)
-        ============================= */
-
-        const { data: videos = [] } = await sb
+        const { data: videosAll = [] } = await sb
             .from("articulos_videos")
             .select("*")
             .eq("articulo_id", id)
-            .order("orden");
+            .order("grupo", { ascending: true })
+            .order("orden", { ascending: true });
 
-        videos.forEach(v => {
+        const hasSDropdown = html.includes("{s-dropdown}") || html.includes("{s-dropdown}".toUpperCase());
+        const usaDropdown = !!art.usa_dropdown || hasSDropdown;
 
-            const videoUrl = v.url;
-            const vttUrl = videoUrl.replace(/\.[^/.]+$/, ".vtt");
+        if (usaDropdown) {
+            const groups = groupVideosBySignal(videosAll);
 
-            const player = `
-                <div class="video-wrapper">
-                    <media-player src="${videoUrl}" playsinline preload="metadata">
-                        <media-provider></media-provider>
-                        <media-video-layout thumbnails="${vttUrl}"></media-video-layout>
-                    </media-player>
-                </div>
-            `;
+            const dropdownId = `signals_${id}`;
+            const dropdownHTML = renderSignalsDropdownHTML({
+                title: art.dropdown_titulo || "Elegí la señal",
+                groups,
+                dropdownId
+            });
 
-            // SOLO reemplaza {video-x}
+            html = html.replaceAll("{s-dropdown}", dropdownHTML);
+
+            $("contenidoArticle").innerHTML = html;
+
+            initSignalsDropdown(dropdownId, groups);
+            return;
+        }
+
+        let out = html;
+        const normalVideos = videosAll.filter(v => !v.grupo);
+
+        normalVideos.forEach(v => {
+            const player = buildPlayer(v.url);
             const regex = new RegExp(`\\{video-${v.orden}\\}`, "g");
-            html = html.replace(regex, player);
+            out = out.replace(regex, player);
         });
 
-        /* =============================
-           RENDER
-        ============================= */
-
-        $("contenidoArticle").innerHTML = html;
+        $("contenidoArticle").innerHTML = out;
 
     } catch (err) {
         console.error("Error cargando artículo:", err);
