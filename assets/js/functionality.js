@@ -35,27 +35,6 @@ const CHANNEL_LOGOS = {
 
 const matches = [
     {
-        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg",
-        fecha: "13",
-        home: "Independiente",
-        away: "Racing",
-        estadio: "Libertadores de América – Ricardo Enrique Bochini",
-        ciudad: "Avellaneda, Provincia de Buenos Aires",
-        hora: "17:30",
-        date: "04/04/2026",
-        day: "Sábado",
-        transmision: {
-            tnt: {
-                relatos: "Pablo Giralt",
-                comentarios: "Juan Pablo Varsky"
-            },
-            espn: {
-                relatos: "Sebastián Vignolo",
-                comentarios: "Diego Latorre"
-            }
-        }
-    },
-    {
         img: "assets/images/rivboc1.png",
         fecha: "15",
         home: "River Plate",
@@ -75,9 +54,8 @@ const matches = [
                 comentarios: "Diego Latorre"
             }
         }
-    }
+    },
 ];
-
 
 /* =====================================================
    RENDER CANALES
