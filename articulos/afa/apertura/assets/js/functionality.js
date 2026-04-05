@@ -184,8 +184,9 @@ async function cargarArticulo() {
         document.title = `${art.titulo} | SATV Sports`;
         $("h1article").textContent = art.titulo;
 
-        const customCSSFileName = `${id}.css`;
-        const customHref = `https://sports.solargentinotv.com.ar/articulos/afa/apertura/assets/css/${customCSSFileName}`;
+        // El navegador sigue pidiendo id.css
+        // Pero Vercel lo resuelve internamente a una función
+        const customHref = `/articulos/afa/apertura/assets/css/${encodeURIComponent(id)}.css`;
 
         const old = document.getElementById("articleCustomCss");
         if (old) old.remove();
@@ -219,7 +220,10 @@ async function cargarArticulo() {
             .order("grupo", { ascending: true })
             .order("orden", { ascending: true });
 
-        const hasSDropdown = html.includes("{s-dropdown}") || html.includes("{s-dropdown}".toUpperCase());
+        const hasSDropdown =
+            html.includes("{s-dropdown}") ||
+            html.includes("{s-dropdown}".toUpperCase());
+
         const usaDropdown = !!art.usa_dropdown || hasSDropdown;
 
         if (usaDropdown) {

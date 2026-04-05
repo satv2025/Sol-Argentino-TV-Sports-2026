@@ -4,7 +4,7 @@
     "rewrites": [
         {
             "source": "/articulos/afa/apertura/assets/css/:id.css",
-            "destination": "/articulos/afa/apertura/assets/css/base.css"
+            "destination": "/api/article-css?id=:id"
         },
         {
             "source": "/:path*/",
