@@ -35,7 +35,7 @@ const CHANNEL_LOGOS = {
 
 const matches = [
     {
-        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Huracan-vs-San-Lorenzo.jpg.webp",
+        img: "assets/images/slohur.png",
         fecha: "4",
         home: "Huracán",
         away: "San Lorenzo",
@@ -45,7 +45,7 @@ const matches = [
         day: "Domingo"
     },
     {
-        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Newells-vs-Rosario-Central.jpg",
+        img: "assets/images/cennob.png",
         fecha: "8",
         home: "Newell's",
         away: "Rosario Central",
@@ -55,7 +55,7 @@ const matches = [
         day: "Domingo"
     },
     {
-        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg",
+        img: "assets/images/racingindependiente.png",
         fecha: "13",
         home: "Independiente",
         away: "Racing",
@@ -65,7 +65,7 @@ const matches = [
         day: "Domingo"
     },
     {
-        img: "assets/images/rivboc1.png",
+        img: "assets/images/bocriv.png",
         fecha: "15",
         home: "River Plate",
         away: "Boca Juniors",
