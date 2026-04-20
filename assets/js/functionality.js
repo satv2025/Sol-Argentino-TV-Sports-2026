@@ -35,26 +35,45 @@ const CHANNEL_LOGOS = {
 
 const matches = [
     {
+        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Huracan-vs-San-Lorenzo.jpg.webp",
+        fecha: "4",
+        home: "Huracán",
+        away: "San Lorenzo",
+        estadio: "Pedro Bidegain - Nuevo Gasómetro",
+        ciudad: "Bajo Flores, Ciudad Autónoma de Buenos Aires",
+        date: "09/08/2026",
+        day: "Domingo"
+    },
+    {
+        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/02/Previa-Newells-vs-Rosario-Central.jpg",
+        fecha: "8",
+        home: "Newell's",
+        away: "Rosario Central",
+        estadio: "Gigante de Arroyito - Dr. Lisandro de la Torre",
+        ciudad: "Rosario, Provincia de Santa Fe",
+        date: "06/09/2026",
+        day: "Domingo"
+    },
+    {
+        img: "https://www.365scores.com/es/news/wp-content/uploads/2025/03/Independiente-vs-Racing.jpg",
+        fecha: "13",
+        home: "Independiente",
+        away: "Racing",
+        estadio: "Presidente Perón - El Cilindro",
+        ciudad: "Avellaneda, Provincia de Buenos Aires",
+        date: "18/10/2026",
+        day: "Domingo"
+    },
+    {
         img: "assets/images/rivboc1.png",
         fecha: "15",
         home: "River Plate",
         away: "Boca Juniors",
-        estadio: "Mâs Monumental - Antonio Vespucio Liberti",
-        ciudad: "Núñez, Ciudad Autónoma de Buenos Aires",
-        hora: "17:00",
-        date: "19/04/2026",
-        day: "Domingo",
-        transmision: {
-            tnt: {
-                relatos: "Pablo Giralt",
-                comentarios: "Juan Pablo Varsky"
-            },
-            espn: {
-                relatos: "Sebastián Vignolo",
-                comentarios: "Diego Latorre"
-            }
-        }
-    },
+        estadio: "Alberto J. Armando - La Bombonera",
+        ciudad: "La Boca, Ciudad Autónoma de Buenos Aires",
+        date: "01/11/2026",
+        day: "Domingo"
+    }
 ];
 
 /* =====================================================
