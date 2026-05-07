@@ -1,3 +1,7 @@
+/* ===========================
+   assets/js/functionality.js
+   =========================== */
+
 /* =====================================================
    INIT
 ===================================================== */
@@ -45,6 +49,7 @@ function groupVideosBySignal(videos) {
     const groups = {};
     for (const v of videos) {
         if (!v.grupo) continue;
+
         const key = v.grupo;
         if (!groups[key]) {
             groups[key] = {
@@ -74,14 +79,13 @@ function renderSignalsDropdownHTML({ title, groups, dropdownId }) {
     const firstLabel = groups[firstKey]?.label || firstKey;
 
     const itemsHtml = keys
-        .map((k) => `
-            <div 
-                class="signalsDropdownItem" 
-                data-value="${escapeHtml(k)}"
-            >
-                ${escapeHtml(groups[k].label)}
-            </div>
-        `)
+        .map(
+            (k) => `
+        <div class="signalsDropdownItem" data-value="${escapeHtml(k)}">
+          ${escapeHtml(groups[k].label)}
+        </div>
+      `
+        )
         .join("");
 
     return `
@@ -118,7 +122,7 @@ function paintSignalVideos(dropdownId, groups, signalId) {
         return;
     }
 
-    box.innerHTML = g.videos.map(v => buildPlayer(v.url)).join("");
+    box.innerHTML = g.videos.map((v) => buildPlayer(v.url)).join("");
 }
 
 function initSignalsDropdown(dropdownId, groups) {
@@ -131,17 +135,14 @@ function initSignalsDropdown(dropdownId, groups) {
     const items = wrap.querySelectorAll(".signalsDropdownItem");
 
     const initialValue = btn?.dataset.value;
-    if (initialValue) {
-        paintSignalVideos(dropdownId, groups, initialValue);
-    }
+    if (initialValue) paintSignalVideos(dropdownId, groups, initialValue);
 
     btn?.addEventListener("click", (e) => {
         e.stopPropagation();
-        const isOpen = dropdown.dataset.open === "true";
-        dropdown.dataset.open = isOpen ? "false" : "true";
+        dropdown.dataset.open = dropdown.dataset.open === "true" ? "false" : "true";
     });
 
-    items.forEach(item => {
+    items.forEach((item) => {
         item.addEventListener("click", () => {
             const value = item.dataset.value;
             const label = item.textContent.trim();
@@ -155,10 +156,32 @@ function initSignalsDropdown(dropdownId, groups) {
     });
 
     document.addEventListener("click", (e) => {
-        if (!wrap.contains(e.target)) {
-            dropdown.dataset.open = "false";
-        }
+        if (!wrap.contains(e.target)) dropdown.dataset.open = "false";
     });
+}
+
+/* =====================================================
+   RENDER STRUCTURE
+   - Header SIN foto
+   - Foto SOLO dentro del artículo (si hay)
+===================================================== */
+function renderArticleShell({ photoUrl, title, bodyHtml }) {
+    const photo = photoUrl
+        ? `
+      <figure class="articlePhoto">
+        <img src="${escapeHtml(photoUrl)}" alt="${escapeHtml(title || "")}">
+      </figure>
+    `
+        : "";
+
+    return `
+    <div class="articleShell">
+      ${photo}
+      <div class="articleProse">
+        ${bodyHtml || ""}
+      </div>
+    </div>
+  `;
 }
 
 /* =====================================================
@@ -182,34 +205,44 @@ async function cargarArticulo() {
         }
 
         document.title = `${art.titulo} | SATV Sports`;
-        $("h1article").textContent = art.titulo;
+        const h1 = $("h1article");
+        if (h1) h1.textContent = art.titulo || "";
 
-        // El navegador sigue pidiendo id.css
-        // Pero Vercel lo resuelve internamente a una función
+        /* =====================================================
+           CSS POR ID (Vercel) — como lo tenías vos
+        ====================================================== */
         const customHref = `/articulos/afa/apertura/assets/css/${encodeURIComponent(id)}.css`;
 
-        const old = document.getElementById("articleCustomCss");
-        if (old) old.remove();
+        let custom = document.getElementById("articleCustomCss");
+        if (!custom) {
+            custom = document.createElement("link");
+            custom.id = "articleCustomCss";
+            custom.rel = "stylesheet";
+            document.head.appendChild(custom);
+        }
+        custom.href = customHref;
 
-        const link = document.createElement("link");
-        link.id = "articleCustomCss";
-        link.rel = "stylesheet";
-        link.href = customHref;
-        document.head.appendChild(link);
-
-        if (art.imagen) {
-            $("imgArticle").src = art.imagen;
-            $("imgArticle").style.display = "block";
-        } else {
-            $("imgArticle").style.display = "none";
+        /* =====================================================
+           HEADER SIN FOTO (siempre)
+        ====================================================== */
+        const heroImg = $("imgArticle");
+        if (heroImg) {
+            heroImg.removeAttribute("src");
+            heroImg.style.display = "none";
         }
 
+        /* =====================================================
+           CONTENIDO
+        ====================================================== */
         let html = art.contenido || "";
 
-        if (html && !html.includes("<p>")) {
+        // Si viene texto plano sin <p>, lo paso a párrafos
+        if (html && !html.includes("<p")) {
             html = html
-                .split("\n\n")
-                .map(t => `<p>${t.trim()}</p>`)
+                .split(/\n\s*\n/g)
+                .map((t) => t.trim())
+                .filter(Boolean)
+                .map((t) => `<p>${t}</p>`)
                 .join("");
         }
 
@@ -220,11 +253,10 @@ async function cargarArticulo() {
             .order("grupo", { ascending: true })
             .order("orden", { ascending: true });
 
-        const hasSDropdown =
-            html.includes("{s-dropdown}") ||
-            html.includes("{s-dropdown}".toUpperCase());
+        const usaDropdown = !!art.usa_dropdown || /\{s-dropdown\}/i.test(html);
 
-        const usaDropdown = !!art.usa_dropdown || hasSDropdown;
+        const cont = $("contenidoArticle");
+        if (!cont) return;
 
         if (usaDropdown) {
             const groups = groupVideosBySignal(videosAll);
@@ -236,24 +268,35 @@ async function cargarArticulo() {
                 dropdownId
             });
 
-            html = html.replaceAll("{s-dropdown}", dropdownHTML);
+            html = html.replace(/\{s-dropdown\}/gi, dropdownHTML);
 
-            $("contenidoArticle").innerHTML = html;
+            cont.innerHTML = renderArticleShell({
+                photoUrl: art.imagen || "",
+                title: art.titulo || "",
+                bodyHtml: html
+            });
+            cont.classList.add("hasShell");
 
             initSignalsDropdown(dropdownId, groups);
             return;
         }
 
+        // Videos normales {video-n}
         let out = html;
-        const normalVideos = videosAll.filter(v => !v.grupo);
+        const normalVideos = videosAll.filter((v) => !v.grupo);
 
-        normalVideos.forEach(v => {
+        normalVideos.forEach((v) => {
             const player = buildPlayer(v.url);
             const regex = new RegExp(`\\{video-${v.orden}\\}`, "g");
             out = out.replace(regex, player);
         });
 
-        $("contenidoArticle").innerHTML = out;
+        cont.innerHTML = renderArticleShell({
+            photoUrl: art.imagen || "",
+            title: art.titulo || "",
+            bodyHtml: out
+        });
+        cont.classList.add("hasShell");
 
     } catch (err) {
         console.error("Error cargando artículo:", err);

@@ -6,9 +6,10 @@
  */
 
 @import url('https://solargentinotv.com.ar/assets/fonts/Gilroy/Gilroy.css');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800;900&display=swap");
 
 * {
-    font-family: Gilroy, !important;
+    font-family: Inter !important;
 }
 
 [data-media-player] {
@@ -28,8 +29,6 @@
 :where(.vds-slider .vds-slider-thumb):hover {
     scale: 4;
 }
-
-:where(.vds-slider .vds-slider-thumb):Hover {}
 
 :where([data-media-player][data-view-type=video]) {
     aspect-ratio: 16/9
@@ -540,7 +539,7 @@ iframe.vds-youtube[data-no-controls] {
     content: var(--media-chapter-title-separator, '\2022');
     display: inline-block;
     margin-right: var(--media-chapter-title-separator-gap, 6px);
-    color: $f00;
+    color: #f00;
 }
 
 .vds-chapter-title:empty::before {
@@ -605,7 +604,6 @@ iframe.vds-youtube[data-no-controls] {
     display: block;
     width: 100%;
     height: 100%;
-    vertical-align: middle
 }
 
 :where(.vds-kb-action.hidden) {
@@ -1676,8 +1674,6 @@ iframe.vds-youtube[data-no-controls] {
     will-change: width
 }
 
-.vds-slider-track-fill.vds-slider-track {}
-
 :where(.vds-slider .vds-slider-thumb) {
     position: absolute;
     top: 50%;
@@ -1699,8 +1695,6 @@ iframe.vds-youtube[data-no-controls] {
 .vds-controls-group .vds-slider-thumb {
     opacity: 0;
 }
-
-.vds-slider-thumb {}
 
 .vds-slider-thumb:hover {
     transform: scale(1.5);

@@ -1,353 +1,323 @@
+@charset "UTF-8";
+
 /* =====================================================
-   FONTS / RESET
+   FONTS (2 Google Fonts)
 ===================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800;900&display=swap");
 
-@import url("https://solargentinotv.com.ar/assets/fonts/Acto/Acto.css");
-
+/* =====================================================
+   RESET + TYPO (font en * / sin fallback)
+===================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Acto" !important;
     user-select: none;
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+
+    font-family: "Inter";
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
 }
 
-:root {
-    --red: #ff2020;
-    --redGlow: rgba(255, 32, 32, .45);
-
-    --dark1: #0b0e14;
-    --dark2: #0a0c12;
-    --dark3: #06070a;
-
-    --textSoft: #cfcfcf;
-
-    /* NUEVO → para blur dinámico */
-    --hero-bg: none;
+html,
+body {
+    min-height: 100%;
 }
-
-
-/* =====================================================
-   BODY NEON BACKGROUND
-===================================================== */
 
 body {
-    color: #fff;
+    overflow-x: hidden;
+    color: #ffffff;
+    line-height: 1.55;
+}
 
+/* =====================================================
+   THEME
+===================================================== */
+:root {
+    --bg0: #060607;
+    --bg1: #0b0c0f;
+
+    --card: rgba(255, 255, 255, .06);
+    --card2: rgba(255, 255, 255, .10);
+
+    --line: rgba(255, 255, 255, .14);
+    --line2: rgba(255, 255, 255, .22);
+
+    --text: #ffffff;
+    --soft: rgba(255, 255, 255, .82);
+    --muted: rgba(255, 255, 255, .62);
+
+    --red: #e50914;
+    --red2: #ff2a3a;
+
+    --green: #26d07c;
+
+    --shadow: 0 30px 96px rgba(0, 0, 0, .56);
+    --shadow2: 0 18px 60px rgba(0, 0, 0, .44);
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+body {
     background:
-        radial-gradient(circle at 50% -15%, var(--redGlow), transparent 60%),
-        linear-gradient(to bottom, var(--dark1), var(--dark2) 50%, var(--dark3));
-
+        radial-gradient(circle at 18% 10%, rgba(229, 9, 20, .22), transparent 35%),
+        radial-gradient(circle at 84% 12%, rgba(38, 208, 124, .10), transparent 38%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg0) 55%, #040405 100%);
     background-attachment: fixed;
 }
 
-
-/* =====================================================
-   TOPBAR
-===================================================== */
-
-.topbar {
-    padding: 18px 40px;
-    background: #10141d;
-    border-bottom: 3px solid var(--red);
-
-    box-shadow: 0 0 18px var(--redGlow);
-}
-
-.logo {
-    font-size: 32px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    cursor: pointer;
-}
-
-.logo span {
-    color: #0ba35e;
-    text-shadow: 0 0 12px #28ef5bb3;
-    font-size: 32px;
-}
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.heroWrap {
-    position: relative;
-    overflow: hidden;
-}
-
-/* 🔥 NUEVO → capa blur GPU sin lag */
-.heroWrap::before {
+/* grain */
+body::before {
     content: "";
-    position: absolute;
-    inset: 0;
-
-    background-image: var(--hero-bg);
-    background-size: cover;
-    background-position: center;
-
-    filter: blur(11px);
-    transform: scale(1.15);
-    opacity: .35;
-
-    z-index: 1;
-}
-
-/* imagen principal */
-.heroImg {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    object-fit: cover;
-    z-index: 2;
-}
-
-/* degradado oscuro arriba */
-.heroWrap::after {
-    content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
     pointer-events: none;
-
+    z-index: 0;
+    opacity: .22;
     background:
-        linear-gradient(to bottom,
-            rgba(0, 0, 0, .6) 0%,
-            rgba(0, 0, 0, .2) 40%,
-            rgba(0, 0, 0, .85) 100%);
-
-    z-index: 3;
+        repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, .02) 0px,
+            rgba(255, 255, 255, .02) 1px,
+            rgba(0, 0, 0, 0) 2px,
+            rgba(0, 0, 0, 0) 4px);
 }
-
-.heroTitle {
-    position: absolute;
-    bottom: 35px;
-    left: 40px;
-    right: 40px;
-
-    font-size: 56px;
-    font-weight: 900;
-
-    text-shadow:
-        0 0 20px var(--redGlow),
-        0 0 40px rgba(0, 0, 0, .7);
-
-    z-index: 4;
-}
-
 
 /* =====================================================
-   MAIN CONTENT
+   LINKS
 ===================================================== */
-
-#articulo {
-    max-width: 900px;
-    margin: 60px auto;
-    background: radial-gradient(circle at 50% -15%, var(--redGlow), transparent 60%), linear-gradient(to bottom, #1e2844 50%, #1e2844);
-    padding-left: 3em;
-    padding-right: 3em;
-    border-radius: 0.6em;
-    padding-bottom: 2em;
-    padding-top: 3em;
-}
-
-
-/* =====================================================
-   BOTON VOLVER
-===================================================== */
-
-.backBtn {
-    display: inline-block;
-    color: var(--red);
-    font-weight: 800;
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 8px;
-    transition: .2s;
-}
-
-.backBtn:hover {
-    background: rgba(255, 32, 32, .15);
-    text-shadow: 0 0 10px var(--redGlow);
-}
-
-
-/* =====================================================
-   TEXTO
-===================================================== */
-
-#contenidoArticle {
-    font-size: 1.15rem;
-    line-height: 1.2;
-    color: var(--textSoft);
-}
-
-.video-wrapper {
-    margin-top: 0em !important;
-    margin-bottom: 0em !important;
-}
-
-.resugol {
-    margin-top: 2.3em;
-}
-
-#contenidoArticle p {
-    margin-bottom: 18px;
-    text-align: justify;
-}
-
-#contenidoArticle h2,
-#contenidoArticle h3 {
-    color: #fff;
-    margin: 30px 0 14px;
-}
-
-
-/* =====================================================
-   VIDEO
-===================================================== */
-
-.video-wrapper {
-    margin: 45px 0;
-    aspect-ratio: 16/9;
-
-    border-radius: 14px;
-    overflow: hidden;
-
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, .7),
-        0 0 20px var(--redGlow);
-}
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width:700px) {
-
-    .heroTitle {
-        font-size: 36px;
-        left: 20px;
-        right: 20px;
-    }
-
-    #articulo {
-        margin: 40px auto;
-        padding-left: 1.5em;
-        padding-right: 1.5em;
-    }
-}
-
-
-/* =============================
-   🌐 WEBKIT
-============================= */
-
-::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-}
-
-::-webkit-scrollbar-track {
-    background:
-        radial-gradient(circle at 50% -15%,
-            rgba(255, 70, 70, .35),
-            transparent 60%),
-        linear-gradient(to bottom,
-            #ff2b2b 0%,
-            #e01a4f 25%,
-            #b3157a 50%,
-            #7a1bbd 75%,
-            #1a0b66 100%);
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgb(219, 121, 121);
-    transition: all .2s ease;
-}
-
-
-/* =============================
-   fixtureBox override
-============================= */
-
-#fixtureBox::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-#fixtureBox::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-#fixtureBox::-webkit-scrollbar-thumb {
-    background-color: rgb(128, 128, 128);
-    border-radius: 10px;
-}
-
-#fixtureBox::-webkit-scrollbar-thumb:hover {
-    background-color: #ccc;
-}
-
-
-/* =============================
-   🦊 FIREFOX
-============================= */
-
-@supports not selector(::-webkit-scrollbar) {
-
-    body {
-        scrollbar-width: thin;
-        scrollbar-color: rgb(219, 121, 121) transparent;
-    }
-
-    #fixtureBox {
-        scrollbar-width: thin;
-        scrollbar-color: rgb(128, 128, 128) transparent;
-    }
-}
-
 a {
+    color: #ffffff;
     text-decoration: none;
-    color: #fff !important;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-.player-number {
-    display: inline-block;
-    font-size: clamp(24px, 2vw, 27px) !important;
-    font-weight: 1000 !important;
-    line-height: 0.95 !important;
-    position: relative !important;
-    top: 0.08em !important;
-    white-space: nowrap !important;
+/* =====================================================
+   TOPBAR (tu HTML)
+===================================================== */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    padding: 18px 22px;
+
+    background: rgba(8, 8, 10, .72);
+    border-bottom: 1px solid rgba(255, 255, 255, .10);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, .40);
+}
+
+.logo {
+    font-family: "Bebas Neue";
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.logo span {
+    font-family: "Bebas Neue";
+    color: var(--red);
+}
+
+/* =====================================================
+   HERO (SIN FOTO + TITULO NO CORTADO)
+===================================================== */
+.heroWrap {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    /* Espacio real para el título (no se corta) */
+    padding: 64px 0 86px;
+
+    background:
+        radial-gradient(circle at 20% 30%, rgba(229, 9, 20, .12), transparent 48%),
+        radial-gradient(circle at 80% 20%, rgba(38, 208, 124, .08), transparent 52%),
+        linear-gradient(180deg, rgba(0, 0, 0, .12) 0%, rgba(0, 0, 0, .70) 100%);
+}
+
+/* 🔒 NO FOTO EN HEADER (siempre) */
+.heroImg {
+    display: none !important;
+}
+
+/* overlay cinematic */
+.heroWrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, .86) 0%, rgba(0, 0, 0, .30) 52%, rgba(0, 0, 0, .70) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, .10) 0%, rgba(0, 0, 0, .18) 40%, rgba(0, 0, 0, .92) 100%);
+}
+
+/* ✅ título: NO absoluto, NO cortado */
+.heroTitle {
+    position: relative;
+    z-index: 2;
+    width: min(1040px, calc(100% - 44px));
+    margin: 0 auto;
+    color: var(--text);
+    font-family: "Bebas Neue" !important;
+    font-size: 57px;
+    font-weight: 400;
+    line-height: 1.02;
+    text-transform: uppercase;
+    text-shadow: 0 20px 54px rgba(0, 0, 0, .78);
+}
+
+/* =====================================================
+   MAIN WRAP (tu HTML: #articulo + #contenidoArticle)
+===================================================== */
+#articulo {
+    width: min(1040px, calc(100% - 36px));
+
+    /* ✅ menos “tirón” para que NO tape el título */
+    margin: -26px auto 78px;
+
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03)),
+        linear-gradient(180deg, rgba(10, 10, 12, .92), rgba(5, 5, 6, .94));
+
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 22px;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+}
+
+#articulo::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, var(--red), rgba(255, 255, 255, .35));
+}
+
+/* wrapper donde el JS mete articleShell */
+#contenidoArticle {
+    padding: 0;
+}
+
+.articleShell {
+    padding: 36px 34px 50px;
+    color: var(--soft);
+    font-size: 1.16rem;
+    line-height: 1.62;
+}
+
+/* fallback si NO hay shell */
+#contenidoArticle:not(.hasShell) {
+    padding: 36px 34px 50px;
+    color: var(--soft);
+    font-size: 1.16rem;
+    line-height: 1.62;
+}
+
+/* =====================================================
+   FOTO DENTRO DEL ARTÍCULO
+===================================================== */
+.articlePhoto {
+    margin: 8px 0 32px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .52);
+}
+
+.articlePhoto img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* =====================================================
+   PROSA (justificado lindo)
+===================================================== */
+.articleProse p,
+#contenidoArticle p {
+    margin-bottom: 22px;
+
+    text-align: justify;
+    text-justify: inter-word;
+
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+
+    text-align-last: left;
+}
+
+.articleProse strong,
+#contenidoArticle strong {
+    color: var(--text);
+    font-weight: 1000;
+}
+
+.articleProse h2,
+.articleProse h3,
+#contenidoArticle h2,
+#contenidoArticle h3 {
+    color: var(--text);
+    margin: 46px 0 18px;
+    font-weight: 1000;
+    text-transform: uppercase;
+}
+
+.articleProse h2,
+#contenidoArticle h2 {
+    font-family: "Bebas Neue";
+    font-size: 52px;
+    line-height: 1.02;
+}
+
+.articleProse h3,
+#contenidoArticle h3 {
+    font-family: "Bebas Neue";
+    font-size: 40px;
+    line-height: 1.06;
+}
+
+/* =====================================================
+   VIDEO
+===================================================== */
+.video-wrapper {
+    margin: 42px 0;
+    aspect-ratio: 16 / 9;
+
+    border-radius: 18px;
+    overflow: hidden;
+
+    background: #000;
+
+    border: 1px solid rgba(255, 255, 255, .14);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, .52);
 }
 
 /* =====================================================
    SIGNALS DROPDOWN
 ===================================================== */
-
 .signalsWrap {
-    margin: 28px 0;
+    margin: 34px 0;
     padding: 16px;
-    border-radius: 16px;
 
-    background:
-        radial-gradient(circle at 50% -20%, rgba(255, 32, 32, .18), transparent 60%),
-        linear-gradient(to bottom, rgba(20, 24, 36, .92), rgba(10, 12, 18, .96));
-
-    border: 1px solid rgba(255, 255, 255, .08);
-
-    box-shadow:
-        0 0 0 1px rgba(255, 255, 255, .03) inset,
-        0 12px 32px rgba(0, 0, 0, .45),
-        0 0 18px rgba(255, 32, 32, .14);
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 18px;
 }
 
 .signalsTop {
@@ -360,154 +330,87 @@ a:hover {
     padding-bottom: 12px;
     margin-bottom: 14px;
 
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
 
 .signalsTitle {
-    color: #fff;
+    color: var(--text);
     font-size: 14px;
-    font-weight: 900;
-    letter-spacing: .4px;
+    font-weight: 1000;
     text-transform: uppercase;
-    text-shadow: 0 0 12px rgba(255, 32, 32, .22);
 }
 
 .signalsDropdown {
     position: relative;
-    min-width: 240px;
+    min-width: 260px;
 }
 
 .signalsDropdownBtn {
     width: 100%;
-    border: 1px solid rgba(255, 32, 32, .35);
-    border-radius: 999px;
-    padding: 12px 14px;
-
-    background:
-        linear-gradient(to bottom, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03)),
-        rgba(10, 12, 18, .88);
-
-    color: #fff;
-    font-weight: 800;
-    font-size: 14px;
-    letter-spacing: .2px;
-    cursor: pointer;
-    outline: none;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
 
-    transition:
-        border-color .18s ease,
-        box-shadow .18s ease,
-        transform .18s ease,
-        background .18s ease;
-}
+    padding: 12px 14px;
 
-.signalsDropdownBtn:hover {
-    border-color: rgba(255, 32, 32, .65);
-    box-shadow:
-        0 0 0 1px rgba(255, 32, 32, .18) inset,
-        0 0 14px rgba(255, 32, 32, .18);
-}
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 999px;
 
-.signalsDropdownBtn:focus {
-    border-color: var(--red);
-    outline: none !important;
-}
+    background: rgba(0, 0, 0, .24);
+    color: var(--text);
 
-.signalsDropdown[data-open="true"] .signalsDropdownBtn {
-    border-color: var(--red);
-    box-shadow:
-        0 0 0 1px rgba(255, 32, 32, .18) inset,
-        0 0 18px rgba(255, 32, 32, .22);
-}
-
-.signalsDropdownBtnText {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.signalsDropdownArrow {
-    flex: 0 0 auto;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 900;
-    color: #fff;
-    opacity: .9;
-    transition: transform .18s ease, opacity .18s ease;
-}
 
-.signalsDropdown[data-open="true"] .signalsDropdownArrow {
-    transform: rotate(180deg);
-    opacity: 1;
+    cursor: pointer;
+    outline: none;
 }
 
 .signalsDropdownMenu {
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
-    width: 100%;
     z-index: 100;
 
+    width: 100%;
     padding: 8px;
-    border-radius: 16px;
 
-    background:
-        radial-gradient(circle at 50% -20%, rgba(255, 32, 32, .12), transparent 65%),
-        linear-gradient(to bottom, rgba(18, 22, 34, .98), rgba(7, 8, 12, .98));
+    border-radius: 14px;
 
-    border: 1px solid rgba(255, 255, 255, .08);
+    background: rgba(8, 8, 10, .96);
+    border: 1px solid rgba(255, 255, 255, .14);
 
-    box-shadow:
-        0 14px 34px rgba(0, 0, 0, .55),
-        0 0 22px rgba(255, 32, 32, .12);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .52);
 
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-6px) scale(.985);
+    transform: translateY(-6px);
     pointer-events: none;
 
-    transition:
-        opacity .18s ease,
-        transform .18s ease,
-        visibility .18s ease;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
 }
 
 .signalsDropdown[data-open="true"] .signalsDropdownMenu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     pointer-events: auto;
 }
 
 .signalsDropdownItem {
-    color: #fff;
-    font-weight: 800;
-    font-size: 14px;
-    letter-spacing: .2px;
-
     padding: 11px 12px;
     border-radius: 12px;
-    cursor: pointer;
 
-    transition:
-        background .16s ease,
-        color .16s ease,
-        box-shadow .16s ease,
-        transform .16s ease;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 900;
+
+    cursor: pointer;
 }
 
 .signalsDropdownItem:hover {
-    background: rgba(255, 32, 32, .12);
-    box-shadow: 0 0 0 1px rgba(255, 32, 32, .12) inset;
-    text-shadow: 0 0 10px rgba(255, 32, 32, .22);
-}
-
-.signalsDropdownItem:active {
-    transform: scale(.985);
+    background: rgba(255, 255, 255, .08);
 }
 
 .signalsVideos {
@@ -518,40 +421,313 @@ a:hover {
 
 .signals-empty {
     padding: 12px 14px;
-    border-radius: 12px;
+    border-radius: 14px;
 
-    color: var(--textSoft);
-    font-weight: 800;
+    color: var(--soft);
+    font-weight: 900;
     font-size: 14px;
 
     background: rgba(255, 255, 255, .05);
-    border: 1px solid rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .10);
 }
 
 /* =====================================================
-   RESPONSIVE
+   MOBILE
 ===================================================== */
-
 @media (max-width: 700px) {
-    .signalsWrap {
-        padding: 14px;
+    .heroWrap {
+        padding: 56px 0 74px;
     }
 
-    .signalsTop {
-        align-items: stretch;
+    .heroTitle {
+        width: calc(100% - 36px);
+        font-size: 66px;
+        line-height: 1.06;
+    }
+
+    #articulo {
+        width: calc(100% - 22px);
+        margin: -18px auto 48px;
+        border-radius: 18px;
+    }
+
+    .articleShell,
+    #contenidoArticle:not(.hasShell) {
+        padding: 26px 20px 32px;
+        font-size: 1.04rem;
+        line-height: 1.50;
+    }
+
+    .articleProse p,
+    #contenidoArticle p {
+        text-align: left;
+        text-align-last: auto;
+    }
+
+    .articleProse h2,
+    #contenidoArticle h2 {
+        font-size: 44px;
+    }
+
+    .articleProse h3,
+    #contenidoArticle h3 {
+        font-size: 34px;
     }
 
     .signalsDropdown {
         width: 100%;
         min-width: 100%;
     }
+}
 
-    .signalsDropdownBtn {
-        font-size: 13px;
-        padding: 11px 13px;
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050506;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--red), rgba(255, 255, 255, .65));
+    border-radius: 999px;
+    border: 3px solid #050506;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--red2), #ffffff);
+}
+
+/* compat */
+.player-number {
+    display: inline-block;
+    font-size: clamp(24px, 2vw, 27px) !important;
+    font-weight: 1000 !important;
+    line-height: .95 !important;
+    position: relative !important;
+    top: .08em !important;
+    white-space: nowrap !important;
+}
+
+/* =====================================================
+   NOTA APERTURA - TERNAS ARBITRALES
+===================================================== */
+
+.nota-apertura {
+    color: #ffffff;
+    line-height: 1.65;
+}
+
+.nota-apertura p {
+    margin: 0 0 16px;
+    color: rgba(255, 255, 255, .88);
+}
+
+.nota-apertura strong {
+    color: #ffffff;
+    font-weight: 1000;
+}
+
+.ternas-wrap {
+    margin: 28px 0;
+    display: grid;
+    gap: 18px;
+}
+
+.terna-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    padding: 20px;
+    border: 1px solid #2e6b3f;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
+        repeating-linear-gradient(90deg,
+            #2f7d46 0px,
+            #2f7d46 34px,
+            #337f49 34px,
+            #337f49 68px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
+    color: #ffffff;
+}
+
+.terna-card::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 14px;
+    pointer-events: none;
+}
+
+.terna-card::after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, .18);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.terna-top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.terna-meta {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em !important;
+    font-weight: 900;
+    color: #ffffff;
+    background: rgba(0, 0, 0, .16);
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.terna-tv {
+    font-size: 12px;
+    font-weight: 900;
+    color: #ffffff;
+    background: rgba(255, 255, 255, .12);
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .16);
+}
+
+.terna-title {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 16px;
+    font-family: "Bebas Neue";
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.terna-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+}
+
+.terna-item {
+    background: rgba(255, 255, 255, .10);
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 12px;
+    padding: 12px 14px;
+    backdrop-filter: blur(2px);
+}
+
+.terna-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em !important;
+    font-weight: 900;
+    color: rgba(255, 255, 255, .84);
+    margin-bottom: 4px;
+}
+
+.terna-value {
+    display: block;
+    font-size: 15px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.35;
+}
+
+.var-zone {
+    position: relative;
+    z-index: 1;
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.monitor {
+    background: linear-gradient(180deg, #1d2327, #101417);
+    border: 2px solid #4b555d;
+    border-radius: 14px;
+    padding: 12px 14px 10px;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .03);
+}
+
+.monitor-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .1em !important;
+    font-weight: 900;
+}
+
+.monitor-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #78ff9f;
+    box-shadow: 0 0 10px rgba(120, 255, 159, .8);
+    flex: 0 0 auto;
+}
+
+.monitor-screen {
+    background: linear-gradient(180deg, #244332, #1b3326);
+    border: 1px solid rgba(120, 255, 159, .28);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.monitor-screen small {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .08em !important;
+    color: rgba(255, 255, 255, .82);
+    margin-bottom: 4px;
+    font-weight: 900;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .terna-card {
+        padding: 16px;
+        border-radius: 16px;
     }
 
-    .signalsDropdownItem {
-        font-size: 13px;
+    .terna-title {
+        font-size: 30px;
+    }
+
+    .terna-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .var-zone {
+        grid-template-columns: 1fr;
     }
 }

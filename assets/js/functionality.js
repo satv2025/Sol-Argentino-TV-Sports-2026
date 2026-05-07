@@ -37,8 +37,8 @@ const matches = [
     {
         img: "assets/images/slohur.png",
         fecha: "4",
-        home: "Huracán",
-        away: "San Lorenzo",
+        home: "San Lorenzo",
+        away: "Huracán",
         estadio: "Pedro Bidegain - Nuevo Gasómetro",
         ciudad: "Bajo Flores, Ciudad Autónoma de Buenos Aires",
         date: "09/08/2026",
@@ -47,8 +47,8 @@ const matches = [
     {
         img: "assets/images/cennob.png",
         fecha: "8",
-        home: "Newell's",
-        away: "Rosario Central",
+        home: "Rosario Central",
+        away: "Newell's",
         estadio: "Gigante de Arroyito - Dr. Lisandro de la Torre",
         ciudad: "Rosario, Provincia de Santa Fe",
         date: "06/09/2026",
@@ -57,8 +57,8 @@ const matches = [
     {
         img: "assets/images/racingindependiente.png",
         fecha: "13",
-        home: "Independiente",
-        away: "Racing",
+        home: "Racing",
+        away: "Independiente",
         estadio: "Presidente Perón - El Cilindro",
         ciudad: "Avellaneda, Provincia de Buenos Aires",
         date: "18/10/2026",
@@ -67,8 +67,8 @@ const matches = [
     {
         img: "assets/images/bocriv.png",
         fecha: "15",
-        home: "River Plate",
-        away: "Boca Juniors",
+        home: "Boca Juniors",
+        away: "River Plate",
         estadio: "Alberto J. Armando - La Bombonera",
         ciudad: "La Boca, Ciudad Autónoma de Buenos Aires",
         date: "01/11/2026",

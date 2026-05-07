@@ -6,9 +6,10 @@
  */
 
 @import url("https://solargentinotv.com.ar/assets/fonts/Barlow/Barlow.css");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@500;600;700;800;900&display=swap");
 
 * {
-    font-family: "BarlowC", sans-serif;
+    font-family: Inter !important;
 }
 
 [data-media-player] .vds-video-layout:not([data-match]) {
