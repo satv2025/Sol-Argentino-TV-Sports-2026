@@ -35,26 +35,6 @@ const CHANNEL_LOGOS = {
 
 const matches = [
     {
-        img: "assets/images/slohur.png",
-        fecha: "4",
-        home: "San Lorenzo",
-        away: "Huracán",
-        estadio: "Pedro Bidegain - Nuevo Gasómetro",
-        ciudad: "Bajo Flores, Ciudad Autónoma de Buenos Aires",
-        date: "09/08/2026",
-        day: "Domingo"
-    },
-    {
-        img: "assets/images/cennob.png",
-        fecha: "8",
-        home: "Rosario Central",
-        away: "Newell's",
-        estadio: "Gigante de Arroyito - Dr. Lisandro de la Torre",
-        ciudad: "Rosario, Provincia de Santa Fe",
-        date: "06/09/2026",
-        day: "Domingo"
-    },
-    {
         img: "assets/images/racingindependiente.png",
         fecha: "13",
         home: "Racing",
